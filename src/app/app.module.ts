@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { QuizModule } from '../modules/quiz/quiz.module';
+import { HomeModule } from '../modules/home/home.module';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule, 
+    QuizModule
   ],
   providers: [],
   bootstrap: [AppComponent]
