@@ -7,6 +7,7 @@ import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizModule } from '../modules/quiz/quiz.module';
 import { HomeModule } from '../modules/home/home.module';
+import { ThemeModule } from '../modules/theme/theme.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HomeModule } from '../modules/home/home.module';
     BrowserAnimationsModule,
     QuizModule,
     HomeModule,
+    ThemeModule,
     RouterModule
   ],
   exports:[

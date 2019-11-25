@@ -1,17 +1,21 @@
-body{
-    background-color: #013750
+body {
+  background-color: #013750;
 }
-
-.nav-border{
-    border-bottom: 2px solid #A5C138;
+.nav-border {
+  border-bottom: 2px solid #a5c138;
 }
-
-.container{
-    width: 70%;
-    justify-content: center;
+.container {
+  width: 70%;
+  justify-content: center;
 }
-
-.btn{
-    border: none;
-    padding: 1%
+.btn {
+  border: none;
+  padding: 1%;
+}
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+.basic-container {
+  padding: 30px;
 }

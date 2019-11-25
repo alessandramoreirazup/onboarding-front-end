@@ -1,28 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  background-color: #013750 }
-
-.bg-darkblue{
-    background-color: #013750
+html,
+body {
+  height: 100%;
 }
-
-.bg-lightblue{
-    background-color: #4C8EAC
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #013750;
 }
-
-.bg-green{
-    background-color: #A5C138
+.bg-darkblue {
+  background-color: #013750;
 }
-
-.bg-white{
-    background-color: #FFFFFF
+.bg-lightblue {
+  background-color: #4c8eac;
 }
-
-.text-white{
-    color: #FFFFFF;
+.bg-green {
+  background-color: #a5c138;
 }
-
-.text-green{
-    color: #A5C138
+.bg-white {
+  background-color: #ffffff;
+}
+.text-white {
+  color: #ffffff;
+}
+.text-green {
+  color: #a5c138;
+}
+.center {
+  display: table;
+  margin: auto;
 }

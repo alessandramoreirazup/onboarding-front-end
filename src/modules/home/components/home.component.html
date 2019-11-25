@@ -1,26 +1,31 @@
-<mat-toolbar class="bg-darkblue text-white nav-border">
-    <span>My Application</span>
-    <mat-menu #appMenu="matMenu">
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Help</button>
-    </mat-menu>
+  <mat-toolbar class="bg-darkblue text-white nav-border">
+    <span>Application Title</span>
+
+  
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+  
   </mat-toolbar>
+
+  
 <br>
-<div class="container">
-    <mat-horizontal-stepper labelPosition="bottom" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
+<div class="container center">
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+       
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" optional>
+     
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
+        <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
     </mat-step>
   </mat-horizontal-stepper>
 
-  <button class="bg-green btn text-white" [routerLink]="['/quiz']">Continuar</button>
+  <button class="bg-green btn text-white center" [routerLink]="['/quiz']">Continuar</button>
 </div>
