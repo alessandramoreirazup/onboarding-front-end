@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { QuizComponent } from './quiz.component';
+import { routing } from 'src/app/app-routing.module';
+import { QuizComponent } from './components/quiz.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    QuizComponent
+  ],
   imports: [
     CommonModule,
+    routing
+  ],
+  exports:[
     QuizComponent
   ]
 })

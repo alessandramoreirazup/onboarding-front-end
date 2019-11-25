@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatSliderModule } from '@angular/material/slider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizModule } from '../modules/quiz/quiz.module';
 import { HomeModule } from '../modules/home/home.module';
@@ -15,10 +15,15 @@ import { HomeModule } from '../modules/home/home.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    routing,
     BrowserAnimationsModule,
-    MatSliderModule, 
-    QuizModule
+    QuizModule,
+    HomeModule,
+    RouterModule
+  ],
+  exports:[
+    QuizModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
