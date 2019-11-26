@@ -1,0 +1,35 @@
+  <mat-toolbar class="bg-darkblue text-white nav-border">
+    <span><img src="../../../assets/img/zup-logo.png" width="90px" height="50px"></span>
+
+  
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+  
+  </mat-toolbar>
+
+  
+<br>
+<div class="container center">
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+       
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" optional>
+     
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+  <a class="btn-floating pulse"><i class="material-icons">menu</i></a>
+<a class="btn-floating btn-large pulse"><i class="material-icons">cloud</i></a>
+<a class="btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
+
+  <button class="bg-green btn text-white center" [routerLink]="['/theme']">Continuar</button>
+</div>
