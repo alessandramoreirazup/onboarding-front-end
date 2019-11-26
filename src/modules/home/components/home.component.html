@@ -1,5 +1,5 @@
   <mat-toolbar class="bg-darkblue text-white nav-border">
-    <span>Application Title</span>
+    <span><img src="../../../assets/img/zup-logo.png" width="90px" height="50px"></span>
 
   
     <!-- This fills the remaining space of the current row -->
@@ -27,5 +27,9 @@
     </mat-step>
   </mat-horizontal-stepper>
 
-  <button class="bg-green btn text-white center" [routerLink]="['/quiz']">Continuar</button>
+  <a class="btn-floating pulse"><i class="material-icons">menu</i></a>
+<a class="btn-floating btn-large pulse"><i class="material-icons">cloud</i></a>
+<a class="btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
+
+  <button class="bg-green btn text-white center" [routerLink]="['/theme']">Continuar</button>
 </div>
