@@ -1,0 +1,23 @@
+.onboarding{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    color: white;
+}
+
+.zup-foguete{
+    width: 500px;
+}
