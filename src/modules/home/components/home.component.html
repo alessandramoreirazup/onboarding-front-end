@@ -4,11 +4,8 @@
     <div class="nav-wrapper">       
       <img src="../../../assets/img/zup-logo.png" class="brand-logo">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
          <!-- Dropdown Trigger -->
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-trigger" id="user-dropdown" data-target="dropdown1">Alessandra<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
       <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
@@ -23,22 +20,25 @@
 <br>
 <div class="container center-align stepper-section">
 
-  <mat-horizontal-stepper labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-       
+  <mat-horizontal-stepper labelPosition="bottom" #stepper >
+    <mat-step>
+        
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" optional>
-     
+  
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-          You are now done.
+        You are now done.
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
     </mat-step>
-  </mat-horizontal-stepper>
+</mat-horizontal-stepper>
 
+  
+  
+  
   <p class="waves-effect waves-light btn-large" [routerLink]="['/theme']">Button</p>
 </div>
