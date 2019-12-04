@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Quiz } from '../components/quiz.model';
 import { QuizService } from '../service/quiz.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -10,13 +10,21 @@ import { QuizService } from '../service/quiz.service';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private quizService : QuizService) { }
+  constructor(
+    private quizService : QuizService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { }
 
   allSteps: any;
   questions: any;
   currentQuestion: any;
+  isCorrect: boolean;
+
+  rightAnswer: number = 0;
+  wrongAnswer: number = 0;
   value: number = 0;
- 
+
 
   ngOnInit() {
     this.quizService.getAll()
@@ -31,18 +39,37 @@ export class QuizComponent implements OnInit {
         
         this.currentQuestion = this.questions[this.value];
 
-        return this.currentQuestion
-
+        console.log(this.questions)
+        return this.currentQuestion;
+        
       }
+
     )
   }
 
   next() {
     this.value++
-
-    return this.value
+    
+    return this.currentQuestion = this.questions[this.value];
   }
 
+  verifyAnswer(answer: boolean){
+
+    if(answer){
+      //this.isCorrect = true
+      this.rightAnswer+= 1
+
+    } else{
+      //!this.isCorrect
+      this.wrongAnswer+= 1
+    }
+
+    if(this.value === this.questions.length -1){
+      this.router.navigate(['/result']);
+    }
+
+    this.next();
+  }
  
 
 }

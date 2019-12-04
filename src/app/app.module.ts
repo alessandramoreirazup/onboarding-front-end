@@ -10,6 +10,7 @@ import { QuizModule } from '../modules/quiz/quiz.module';
 import { HomeModule } from '../modules/home/home.module';
 import { ThemeModule } from '../modules/theme/theme.module';
 import { LoginModule } from '../modules/login/login.module';
+import { ResultModule } from '../modules/result/result.module';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { LoginModule } from '../modules/login/login.module';
     ThemeModule,
     RouterModule,
     MaterializeModule,
-    LoginModule
+    LoginModule,
+    ResultModule
   ],
   exports:[
     QuizModule,
     HomeModule,
     LoginModule,
-    ThemeModule
+    ThemeModule,
+    ResultModule
   ],
   providers: [],
   bootstrap: [AppComponent]

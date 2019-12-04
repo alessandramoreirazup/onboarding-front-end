@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResultComponent } from './components/result/result.component';
+import { ResultComponent } from './components/result.component';
 
 
 
