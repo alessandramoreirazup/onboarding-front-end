@@ -3,6 +3,7 @@
     margin: 0 auto;
     justify-content: space-around;
     width: 70%;
+    margin-top: 65px;
 }
 
 .login{
@@ -18,6 +19,20 @@
     color: white;
 }
 
-.zup-foguete{
-    width: 500px;
+.g-img{
+    width: 30px;
 }
+
+.g-button{
+    background-color: white;
+    width: 20vw;
+    height: 7vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.zup-foguete{
+    width: 400px;  
+}
+
