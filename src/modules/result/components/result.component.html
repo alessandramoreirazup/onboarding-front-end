@@ -1,7 +1,18 @@
-<section class="center container">
-    <h1 class="white-text">2/3</h1>
-    <p class="title white-text">Seu resultado</p>
-    <hr class="bg-green">
-    <br>
-    <button class="btn">Terminar</button>
-</section>
+<div class="sky">
+    <div class="diagonal-sky-bg">
+       <div class="stars">
+          <div class="small"></div>
+          <div class="medium"></div>
+          <div class="big"></div>
+        </div>
+    </div>
+    <section class="center container">
+        <p class="title white-text">Seu resultado</p>
+        <app-spinner class="center">
+        </app-spinner>
+        <p class="white-text subtitle">Mandou bem!</p>
+        <hr class="bg-green">
+        <br>
+        <button class="btn btn-large" [routerLink]="['/home']">Terminar</button>
+    </section>
+</div>

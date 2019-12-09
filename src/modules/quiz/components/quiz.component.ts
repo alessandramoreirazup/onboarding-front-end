@@ -1,12 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuizService } from '../service/quiz.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { fadeAnimation } from 'src/app/animations';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  styleUrls: ['./quiz.component.scss'],
+  animations: [fadeAnimation]
 })
 export class QuizComponent implements OnInit {
 
@@ -56,11 +58,9 @@ export class QuizComponent implements OnInit {
   verifyAnswer(answer: boolean){
 
     if(answer){
-      //this.isCorrect = true
       this.rightAnswer+= 1
 
     } else{
-      //!this.isCorrect
       this.wrongAnswer+= 1
     }
 

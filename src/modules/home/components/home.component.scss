@@ -34,11 +34,14 @@ body{
 
 ::ng-deep{
 
+    .mat-stepper-horizontal{
+        background-color: transparent;
+    }
 
     .mat-horizontal-stepper-header {
         &[ng-reflect-active="true"]+.mat-stepper-horizontal-line {
             border-top-color: #A5C138 !important;
-            border-top: 5px solid;
+            border-width: 100%;
             line-height: 10px;
         }
     }
@@ -50,20 +53,10 @@ body{
     
     .mat-step-icon-selected{
 
-        background: #A5C138;
+        background: #A5C138!important;
        
         &:disabled{
             background: #c4c4c4;
         }
     }
 }
-
- ::ng-deep .mat-step-header:nth-of-type(1) .mat-step-icon {
-         background: #A5C138;
-  }
- ::ng-deep .mat-step-header:nth-of-type(2) .mat-step-icon {
-     background: #A5C138;
- }
- ::ng-deep .mat-step-header:nth-of-type(3) .mat-step-icon {
-     background: #A5C138;  
-  } 

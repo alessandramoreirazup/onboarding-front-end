@@ -11,6 +11,7 @@ import { HomeModule } from '../modules/home/home.module';
 import { ThemeModule } from '../modules/theme/theme.module';
 import { LoginModule } from '../modules/login/login.module';
 import { ResultModule } from '../modules/result/result.module';
+import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,16 @@ import { ResultModule } from '../modules/result/result.module';
     RouterModule,
     MaterializeModule,
     LoginModule,
-    ResultModule
+    ResultModule,
+    AdmPanelModule
   ],
   exports:[
     QuizModule,
     HomeModule,
     LoginModule,
     ThemeModule,
-    ResultModule
+    ResultModule,
+    AdmPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
