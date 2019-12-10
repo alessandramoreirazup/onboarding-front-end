@@ -8,13 +8,15 @@ import { GoogleLoginProvider, LoginOpt } from "angularx-social-login";
 function getAuthServiceConfigs(): AuthServiceConfig{
 
 const opt: LoginOpt = {
-  hosted_domain: 'zup.com.br'
+  hosted_domain: 'zup.com.br',
+  scope: 'email',
+  fetch_basic_profile: false
 }
 
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("878581987495-v9mhl31sn2plog3n53fgapuqe8gq72tu.apps.googleusercontent.com", opt),
+    provider: new GoogleLoginProvider("592209104753-2chr06bh7ls6h8tvev6r35setg36oe3i.apps.googleusercontent.com", opt),
   }
 ]);
 
