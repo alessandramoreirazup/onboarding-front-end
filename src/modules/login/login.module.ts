@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LoginComponent } from './components/login.component';
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { SocialLoginModule, AuthServiceConfig, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider, LoginOpt } from "angularx-social-login";
 
 function getAuthServiceConfigs(): AuthServiceConfig{
 
 const opt: LoginOpt = {
   hosted_domain: 'zup.com.br',
-  scope: 'email',
-  fetch_basic_profile: false
+  scope: 'profile email'
 }
+
 
 let config = new AuthServiceConfig([
   {
