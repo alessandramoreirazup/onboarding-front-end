@@ -25,6 +25,7 @@ export class QuizComponent implements OnInit {
 
   rightAnswer: number = 0;
   wrongAnswer: number = 0;
+  totalAnswered: number = 0;
   value: number = 0;
 
 
@@ -63,6 +64,10 @@ export class QuizComponent implements OnInit {
     } else{
       this.wrongAnswer+= 1
     }
+
+    this.totalAnswered+=1;
+
+    console.log(this.totalAnswered)
 
     if(this.value === this.questions.length -1){
       this.router.navigate(['/result']);
