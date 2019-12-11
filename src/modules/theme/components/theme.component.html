@@ -1,17 +1,19 @@
-<mat-toolbar class="bg-darkblue text-white nav-border">
-    <span><img src="../../../assets/img/zup-logo.png" width="90px" height="50px"></span>
-
+<nav class="transparent nav-border">
+    <div class="nav-wrapper">       
+      <img src="../../../assets/img/zup-logo.png" class="brand-logo">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
   
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-  
-  </mat-toolbar>
-
-    <section class="center theme">
-        <h1 class="title">Título do assunto</h1>
-        <h2 class="text-white link-zupnet center">link pro zupnet</h2>
-        <button [routerLink]="['/quiz']" class="btn bg-green text-white center">continuar</button>
-  
-    </section>
+  <section class="center-align theme margin-top-section">
+      <p class="title">Título do assunto</p>
+      <p class="text-white">link pro zupnet</p>
+      
+      <p class="waves-effect waves-light btn-large" [routerLink]="['/quiz']">Button</p>
+  </section>
 
   

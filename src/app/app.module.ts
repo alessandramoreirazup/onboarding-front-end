@@ -9,7 +9,9 @@ import { AppComponent } from './app.component';
 import { QuizModule } from '../modules/quiz/quiz.module';
 import { HomeModule } from '../modules/home/home.module';
 import { ThemeModule } from '../modules/theme/theme.module';
-
+import { LoginModule } from '../modules/login/login.module';
+import { ResultModule } from '../modules/result/result.module';
+import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,18 @@ import { ThemeModule } from '../modules/theme/theme.module';
     HomeModule,
     ThemeModule,
     RouterModule,
-    MaterializeModule
+    MaterializeModule,
+    LoginModule,
+    ResultModule,
+    AdmPanelModule
   ],
   exports:[
     QuizModule,
-    HomeModule
+    HomeModule,
+    LoginModule,
+    ThemeModule,
+    ResultModule,
+    AdmPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

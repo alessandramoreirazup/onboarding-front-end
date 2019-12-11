@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { getAllLifecycleHooks } from '@angular/compiler/src/lifecycle_reflector';
 
+import { fadeAnimation } from './animations'
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [fadeAnimation]
+
 })
 export class AppComponent {
   title = 'onboarding-front-end';

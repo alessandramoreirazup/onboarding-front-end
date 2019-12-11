@@ -1,35 +1,44 @@
-  <mat-toolbar class="bg-darkblue text-white nav-border">
-    <span><img src="../../../assets/img/zup-logo.png" width="90px" height="50px"></span>
 
-  
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-  
-  </mat-toolbar>
 
-  
+<nav class="transparent nav-border">
+    <div class="nav-wrapper">       
+      <img src="../../../assets/img/zup-logo.png" class="brand-logo">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+         <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" id="user-dropdown" data-target="dropdown1">Alessandra<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+      <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
+    </div>
+  </nav>
+
 <br>
-<div class="container center">
-  <mat-horizontal-stepper labelPosition="bottom" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-       
+<div class="container center-align stepper-section">
+
+  <mat-horizontal-stepper labelPosition="bottom" #stepper >
+    <mat-step>
+        
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" optional>
-     
+  
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-          You are now done.
+        You are now done.
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
     </mat-step>
-  </mat-horizontal-stepper>
+</mat-horizontal-stepper>
 
-  <a class="btn-floating pulse"><i class="material-icons">menu</i></a>
-<a class="btn-floating btn-large pulse"><i class="material-icons">cloud</i></a>
-<a class="btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a>
-
-  <button class="bg-green btn text-white center" [routerLink]="['/theme']">Continuar</button>
+  
+  
+  
+  <p class="waves-effect waves-light btn-large" [routerLink]="['/quiz']">Iniciar Quiz!</p>
 </div>

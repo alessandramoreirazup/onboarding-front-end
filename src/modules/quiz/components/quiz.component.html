@@ -1,9 +1,23 @@
-<section class="container text-white center">
-    <h1 class="title center">Título da questão</h1>
-    <br>
-    <h2 class="description center">Descrição da questão aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
-    <button class="option center">option 1</button>
-    <button class="option center">option 2</button>
-    <button class="option center">option 3</button>
-    <button class="option center">option 4</button>
-</section>
+<div class="sky">
+        <mat-progress-bar mode="determinate" value="50" color="warn"></mat-progress-bar>
+
+        <div class="diagonal-sky-bg">
+           <div class="stars">
+              <div class="small"></div>
+              <div class="medium"></div>
+              <div class="big"></div>
+            </div>
+        </div>
+            <section class="counter container margin-top-section " *ngIf="currentQuestion">
+
+                <div class="center-align question-bg" >
+                    <p class="title center text-white"> Questão {{ currentQuestion.id + 1 }}</p>
+                    <br>
+                    <p class="description text-white">{{ currentQuestion.description }} </p>
+                    <div class="options-section" *ngFor="let alternatives of currentQuestion.alternatives">
+                        <button class="option" (click)="verifyAnswer(alternatives.correct)"> {{ alternatives.description }}</button>
+                        <br>
+                    </div>
+                </div>
+            </section>
+      </div>
