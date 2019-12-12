@@ -10,6 +10,7 @@ export class ModalInputInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

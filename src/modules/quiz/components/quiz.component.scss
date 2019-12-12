@@ -39,6 +39,7 @@ section {
   animation: back-pulse 800ms infinite linear 400ms;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  cursor: none;
 }
 
 @keyframes back-pulse {
