@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterModule } from '@angular/router';
 
 import { ResultComponent } from './components/result.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-
+import { routing } from 'src/app/app-routing.module';
 
 
 @NgModule({
   declarations: [
-    ResultComponent,
-    SpinnerComponent
+    ResultComponent
+ 
   ],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
-    RouterModule
+    routing
   ],
   exports:[
     MatProgressSpinnerModule

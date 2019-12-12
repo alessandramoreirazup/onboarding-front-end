@@ -12,6 +12,8 @@ import { ThemeModule } from '../modules/theme/theme.module';
 import { LoginModule } from '../modules/login/login.module';
 import { ResultModule } from '../modules/result/result.module';
 import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
+import { InputQuestionsModule } from '../modules/input-questions/input-questions.module';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
     MaterializeModule,
     LoginModule,
     ResultModule,
-    AdmPanelModule
+    AdmPanelModule,
+    InputQuestionsModule
   ],
   exports:[
     QuizModule,
@@ -36,7 +39,8 @@ import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
     LoginModule,
     ThemeModule,
     ResultModule,
-    AdmPanelModule
+    AdmPanelModule,
+    InputQuestionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
