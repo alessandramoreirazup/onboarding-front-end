@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AdmPanelComponent } from './components/adm-panel.component';
-
+import { routing } from 'src/app/app-routing.module';
 
 
 @NgModule({
@@ -12,7 +12,11 @@ import { AdmPanelComponent } from './components/adm-panel.component';
   ],
   imports: [
     CommonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    routing
+  ],
+  exports:[
+    AdmPanelComponent
   ]
 })
 export class AdmPanelModule { }
