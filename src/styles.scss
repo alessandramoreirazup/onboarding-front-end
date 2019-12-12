@@ -6,7 +6,7 @@ html, body {
 
 body { 
     margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif;  
+    font-family: 'Nunito', sans-serif; 
     background-color: #013750 
 }
 
@@ -28,6 +28,10 @@ body {
 
 .bg-white{
     background-color: #FFFFFF
+}
+
+.border-green{
+    border-color: #A5C138;
 }
 
 .text-white{

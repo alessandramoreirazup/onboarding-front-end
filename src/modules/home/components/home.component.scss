@@ -9,11 +9,6 @@ body{
     width: 100%
 }
 
-.btn{
-    border: none;
-    padding: 1%
-}
-
 .stepper-section{
     margin-top: 10%
 }
@@ -40,8 +35,6 @@ body{
 
     .mat-horizontal-stepper-header {
         &[ng-reflect-active="true"]+.mat-stepper-horizontal-line {
-            border-top-color: #A5C138 !important;
-            border-width: 100%;
             line-height: 10px;
         }
     }
@@ -58,5 +51,14 @@ body{
         &:disabled{
             background: #c4c4c4;
         }
+    }
+
+    .mat-horizontal-stepper-header::after, .mat-horizontal-stepper-header::before, .mat-stepper-horizontal-line {
+        border-top-color: #A5C138;
+    }
+
+    .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+        background-color: #A5C138;
+        color: #fff;
     }
 }

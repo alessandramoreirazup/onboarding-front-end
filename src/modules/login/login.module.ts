@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login.component';
 import { SocialLoginModule, AuthServiceConfig, SocialUser } from "angularx-social-login";
@@ -27,7 +28,8 @@ let config = new AuthServiceConfig([
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    SocialLoginModule
+    SocialLoginModule,
+    RouterModule
   ],
   providers: [
     {
