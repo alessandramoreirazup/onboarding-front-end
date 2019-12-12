@@ -19,8 +19,11 @@ export class LoginService {
   }
 
   login() {
-    console.log("clicou")
-    return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  authUser(){
+    return this.login;
   }
 
 }

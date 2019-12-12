@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './components/login.component';
 import { SocialLoginModule, AuthServiceConfig, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider, LoginOpt } from "angularx-social-login";
+import { LoginGuard } from './guards/login.guard';
 
 function getAuthServiceConfigs(): AuthServiceConfig{
 
@@ -27,9 +29,11 @@ let config = new AuthServiceConfig([
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
+    LoginGuard,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
