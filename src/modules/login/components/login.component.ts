@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import{ SocialUser } from "angularx-social-login"
 import { GoogleLoginProvider } from "angularx-social-login";
+import { Router } from '@angular/router';
+import { LoginService } from '../service/login.service';
+import { UserService } from '../service/user/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,14 +15,24 @@ import { GoogleLoginProvider } from "angularx-social-login";
 })
 
   export class LoginComponent implements OnInit {
-
-    private user: SocialUser;
-    private loggedIn: boolean;
  
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private loginService: LoginService, private userService: UserService, private router: Router) { }
    
     signInWithGoogle(): void {
       this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+      this.loginService.login().then((googleResponse) => {
+        if (this.userService.getUser) {
+        } else {
+          let user = {
+            idGoogle: googleResponse.id,
+            name: googleResponse.name,
+            email: googleResponse.email
+          }
+          this.userService.registerUser(user).subscribe((user) => {
+          });
+        }
+        this.router.navigateByUrl("/home")
+      });
     }
    
     signOut(): void {
@@ -26,11 +40,11 @@ import { GoogleLoginProvider } from "angularx-social-login";
     }
   
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-      console.log(this.user)
-    });
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = (user != null);
+    //   console.log(this.user)
+    // });
   }
     
 }

@@ -34,6 +34,6 @@ let config = new AuthServiceConfig([
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     }
-  ]
+  ], 
 })
 export class LoginModule { }
