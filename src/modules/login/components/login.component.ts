@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "angularx-social-login";
-import{ SocialUser } from "angularx-social-login"
+import { SocialUser } from "angularx-social-login"
 import { GoogleLoginProvider } from "angularx-social-login";
+import { Router } from '@angular/router';
+import { LoginService } from '../service/login.service';
+import { UserService } from '../service/user/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,27 +14,40 @@ import { GoogleLoginProvider } from "angularx-social-login";
   styleUrls: ['./login.component.scss']
 })
 
-  export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
-    private user: SocialUser;
-    private loggedIn: boolean;
- 
-    constructor(private authService: AuthService) { }
-   
-    signInWithGoogle(): void {
-      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    }
-   
-    signOut(): void {
-      this.authService.signOut();
-    }
-  
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-      console.log(this.user)
+  constructor(private authService: AuthService, private loginService: LoginService, private userService: UserService, private router: Router) { }
+
+  login() {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.loginService.login().then((googleResponse) => {
+      if (this.userService.getUser) {
+        
+      } else {
+        let user = {
+          idGoogle: googleResponse.id,
+          name: googleResponse.name,
+          email: googleResponse.email
+        }
+        this.userService.registerUser(user).subscribe((user) => {
+          console.log(user)
+          console.log(googleResponse)
+        });
+      }
+      this.router.navigateByUrl("/home")
     });
   }
-    
+
+  signOut() {
+    this.authService.signOut();
+  }
+
+  ngOnInit() {
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = (user != null);
+    //   console.log(this.user)
+    // });
+  }
+
 }

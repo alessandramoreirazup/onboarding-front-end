@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { AuthService } from 'angular-6-social-login';
-import { GoogleLoginProvider } from 'angular-6-social-login';
-import { SocialUser } from 'angular-6-social-login';
+import { AuthService } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,11 @@ export class LoginService {
   }
 
   login() {
-    console.log("clicou")
-    return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  authUser(){
+    return this.login;
   }
 
 }
