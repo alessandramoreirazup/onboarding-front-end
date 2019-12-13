@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../service/quiz.service';
 import { fadeAnimation } from 'src/app/animations';
 
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
@@ -19,49 +20,69 @@ export class QuizComponent implements OnInit {
     ) { } 
 
   allSteps: any;
-  questions: any;
+  allQuestions: any;
   currentQuestion: any;
- 
-  rightAnswer: number = 0;
-  wrongAnswer: number = 0;
+  filteredQuestions: any;
+
+
   value: number = 0;
 
 
   ngOnInit() {
-    this.getCurrentQuestion()
+    this.getCurrentQuestion();
   }
 
   next() {
+
     this.value++
 
-    return this.currentQuestion = this.questions[this.value];
+    return this.currentQuestion = this.filteredQuestions[this.value];
   }
 
   verifyAnswer(answer: any){
-
-    answer ? this.rightAnswer+= 1 : this.wrongAnswer+= 1;
     
-    console.log(answer)
-    
-    if(this.value === this.questions.length -1){
+    if(this.value === this.filteredQuestions.length -1){
       this.router.navigate(['/result']);
     }
 
     this.next();
   }
 
+  verifyQuestion(question: any){
+    if(!question.answered){
+      return question
+    }
+  }
+
+  reverseArray(arr) {
+    var newArray = [];
+    for (var i = arr.length - 1; i >= 0; i--) {
+      newArray.push(arr[i]);
+    }
+    return newArray;
+  }
+
   getCurrentQuestion(){
     this.quizService.getAll()
     .subscribe(
       (data) =>{
-        
-        this.allSteps = data['steps'];
+ 
+        this.allSteps = data['step'];
 
-        this.allSteps.forEach(step => {
-          this.questions = step.questions
-        });
-        
-        this.currentQuestion = this.questions[this.value];
+        this.allQuestions = this.allSteps.question
+
+        console.log(this.allQuestions)
+
+        this.filteredQuestions = this.allQuestions.filter((question) => {
+          if(!question.answered){
+            return question;
+          }
+        } 
+        )
+
+        this.reverseArray(this.filteredQuestions)
+
+        this.currentQuestion = this.filteredQuestions[this.value];
 
         return this.currentQuestion;
         
