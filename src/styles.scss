@@ -10,6 +10,14 @@ body {
     background-color: #013750 
 }
 
+::-moz-selection {
+    background: rgb(10, 158, 226); 
+}
+
+::selection { 
+    background: rgb(10, 158, 226); 
+}
+
 *{
     box-sizing: border-box;
 } 
