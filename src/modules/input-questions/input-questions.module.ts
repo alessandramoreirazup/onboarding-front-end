@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
 
-import { AdmPanelComponent } from './components/adm-panel.component';
+import { InputQuestionsComponent } from './components/input-questions.component';
+
+
 import { routing } from 'src/app/app-routing.module';
 
 
 @NgModule({
   declarations: [
-    AdmPanelComponent
+    InputQuestionsComponent
   ],
   imports: [
     CommonModule,
-    MatExpansionModule,
     routing
   ],
   exports:[
-    AdmPanelComponent
+    InputQuestionsComponent
   ]
 })
-export class AdmPanelModule { }
+export class InputQuestionsModule { }

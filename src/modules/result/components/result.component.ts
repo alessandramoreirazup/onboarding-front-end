@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from 'src/modules/quiz/service/quiz.service';
 
 
 @Component({
@@ -8,13 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-  constructor() { }
-  value= 20;
+  constructor(private quizService: QuizService) { }
+  
+  value: number;
 
   ngOnInit() {
-   
+
   }
-
-
 
 }
