@@ -33,7 +33,7 @@ let config = new AuthServiceConfig([
   imports: [
     CommonModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule, 
     RouterModule
 
   ],
