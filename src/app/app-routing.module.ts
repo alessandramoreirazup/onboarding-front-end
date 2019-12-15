@@ -7,18 +7,18 @@ import { ThemeComponent } from 'src/modules/theme/components/theme.component';
 import { LoginComponent } from 'src/modules/login/components/login.component';
 import { ResultComponent } from 'src/modules/result/components/result.component';
 import { AdmPanelComponent } from 'src/modules/adm-panel/components/adm-panel.component';
-import { LoginGuard } from 'src/modules/login/guards/login.guard';
+import { DashboardComponent } from 'src/modules/dashboard/components/dashboard.component';
 import { InputQuestionsComponent } from 'src/modules/input-questions/components/input-questions.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent 
-}, 
+  { path: '', component: LoginComponent }, 
   { path: 'quiz', component: QuizComponent},
   { path: 'theme', component: ThemeComponent },
   { path: 'home', component: HomeComponent},
   { path: 'result', component: ResultComponent },
   { path: 'admpanel', component: AdmPanelComponent },
-  { path: 'input-questions', component: InputQuestionsComponent }
+  { path: 'input-questions', component: InputQuestionsComponent },
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 
