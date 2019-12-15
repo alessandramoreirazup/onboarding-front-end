@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-input-info',
@@ -12,5 +13,7 @@ export class ModalInputInfoComponent implements OnInit {
   ngOnInit() {
     
   }
+
+
 
 }

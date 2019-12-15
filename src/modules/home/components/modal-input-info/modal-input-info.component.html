@@ -1,1 +1,32 @@
-<p>modal-input-info works!</p>
+
+<mat-dialog-content class="center">
+  <p>Mensagem de boas vindas de entrada</p>
+  <div class="row">
+    <form class="col s12 center">
+      <div class="col s12">
+          <select class="browser-default text-black">
+            <option value="" disabled selected>Selecione sua localização</option>
+            <option value="SP">São Paulo</option>
+            <option value="UDI">Uberlândia</option>
+            <option value="BH">Belo Horizonte</option>
+            <option value="SC">Joinville</option>
+            <option value="CAMP">Campinas</option>
+          </select>  
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="input_text" type="text" data-length="10">
+          <label for="input_text">Projeto</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="input_text" type="text" data-length="10">
+          <label for="input_text">POD</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="center">
+    <button class="btn center"(click)="save()">Enviar</button>
+</mat-dialog-actions>
