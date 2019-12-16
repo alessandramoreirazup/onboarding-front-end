@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login"
@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private loginService: LoginService, private userService: UserService, private router: Router) { }
 
   login() {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.loginService.login().then((googleResponse) => {
+      this.loginService.signIn();
       if (this.userService.getUser) {
-        
+
       } else {
         let user = {
           idGoogle: googleResponse.id,
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         this.userService.registerUser(user).subscribe((user) => {
           console.log(user)
           console.log(googleResponse)
+
         });
       }
       this.router.navigateByUrl("/home")

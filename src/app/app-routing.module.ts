@@ -11,12 +11,11 @@ import { LoginGuard } from 'src/modules/login/guards/login.guard';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent 
-}, 
+  { path: '', component: LoginComponent}, 
   { path: 'quiz', component: QuizComponent},
   { path: 'theme', component: ThemeComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'result', component: ResultComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
+  { path: 'result', component: ResultComponent, canActivate: [LoginGuard] },
   { path: 'admpanel', component: AdmPanelComponent }
 ];
 

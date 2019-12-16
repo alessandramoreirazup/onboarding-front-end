@@ -10,7 +10,7 @@ import { SocialUser } from 'angularx-social-login';
 export class LoginService {
 
   private user: SocialUser;
-  private loggedIn: boolean;
+  private loggedIn = false;
 
   constructor(private authService: AuthService) { }
 
@@ -18,8 +18,16 @@ export class LoginService {
     this.authService.signOut();
   }
 
+  signIn() {
+    this.loggedIn = true;
+  }
+
   login() {
     return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  isLoggedIn(): Boolean {
+    return this.loggedIn;
   }
 
   authUser(){
