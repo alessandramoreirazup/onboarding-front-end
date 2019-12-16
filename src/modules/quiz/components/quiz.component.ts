@@ -54,7 +54,7 @@ export class QuizComponent implements OnInit {
     this.alternative.description = answer.description
     
     this.quizService.postData(this.alternative).subscribe((res : AlternativeData)=> 
-      this.postData = res
+      this.alternative = res
     )
 
     if(this.value === this.filteredQuestions.length -1){

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HomeService } from '../service/home.service';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { MatDialogModule, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+import { UserModel, UserData } from './user.model';
+import { HomeService } from '../service/home.service';
 import { ModalInputInfoComponent } from './modal-input-info/modal-input-info.component';
 
 
@@ -19,22 +21,19 @@ export class HomeComponent implements OnInit {
   private loggedIn: boolean;
 
 
-
   constructor(
+    private homeService: HomeService,
     private authService: AuthService,
     private modal: MatDialog
     ) { }
 
   ngOnInit() {
-    // this.modal.open(this.modalComponent);
 
     this.openDialog()
 
-      this.authService.authState.subscribe((user) => {
-        this.user = user;
-        console.log(this.user)
-        this.loggedIn = (user != null);
-      });
+    this.getCurrentUser()
+
+    
   }
 
   openDialog() {
@@ -48,5 +47,13 @@ export class HomeComponent implements OnInit {
       width: '80%',
       panelClass: 'custom-modalbox'
   });
+  }
+
+  getCurrentUser(){
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(this.user)
+      this.loggedIn = (user != null);
+    });
   }
 }

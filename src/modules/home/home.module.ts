@@ -5,6 +5,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule }  from '@angular/forms';
+
 
 import { routing } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home.component';
@@ -24,10 +26,13 @@ import { ModalInputInfoComponent } from './components/modal-input-info/modal-inp
     MatMenuModule,
     MatStepperModule,
     routing,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule 
+
   ],
   exports: [
-    HomeComponent
+    HomeComponent,
+    ModalInputInfoComponent
   ],
   
   entryComponents: [ModalInputInfoComponent]

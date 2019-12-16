@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { AlternativeModel } from '../components/alternative.model';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class QuizService {
