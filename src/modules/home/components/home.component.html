@@ -1,13 +1,11 @@
-
-
 <nav class="transparent nav-border">
     <div class="nav-wrapper">       
       <img src="../../../assets/img/zup-logo.png" class="brand-logo">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
          <!-- Dropdown Trigger -->
       <li><a class="dropdown-trigger" id="user-dropdown" data-target="dropdown1">
-        <img [src]="user.photoUrl" width="30px" height="30px" style="border-radius: 100%; margin-left: -50px; position: fixed; margin-top: 15px">
-        {{ user.firstName }}<i class="material-icons right">arrow_drop_down</i></a></li>
+        <img [src]="googleUser.photoUrl" width="30px" height="30px" style="border-radius: 100%; margin-left: -50px; position: fixed; margin-top: 15px">
+        {{ googleUser.firstName }}<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
       <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">

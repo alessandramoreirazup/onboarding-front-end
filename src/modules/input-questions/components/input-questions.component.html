@@ -4,27 +4,27 @@
   <hr class="border-title">
   <br>
     <select class="browser-default">
-        <option value="" disabled selected>Selecione o tema</option>
+        <option name="Selecione o tema" disabled selected [(ngModel)]="idStep">Selecione o tema</option>
         <option value="1">Cultura</option>
         <option value="2">Tecnologia</option>
         <option value="3">Estrutura</option>
       </select>    
 
     <div class="row text-white">
-        <form class="col s12">
+        <div class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                  <input id="description" type="text" class="validate">
+                  <input id="description" type="text" class="validate" [(ngModel)]="questionDescription">
                   <label for="description">Descrição da pergunta</label>
             </div>    
             <h6 class="text-white subtitle">Escreva as alternativas</h6>
 
             <div class="input-field col s6">
-              <input id="first" type="text" class="validate">
+              <input id="first" type="text" class="validate" [(ngModel)]="alternative1">
               <label for="first">Primeira</label>
             </div>
             <div class="input-field col s6">
-              <input id="second" type="text" class="validate">
+              <input id="second" type="text" class="validate" [(ngModel)]="alternative2">
               <label for="second">Segunda</label>
             </div>
             <div class="input-field col s6">
@@ -37,7 +37,7 @@
             </div>
               <div class="center"> 
                 <select class="browser-default text-black">
-                  <option value="" disabled selected>Selecione a alternativa correta</option>
+                  <option name="Selecione a alternativa correta" disabled selected [(ngModel)]="alternative1">Selecione a alternativa correta</option>
                   <option value="1">Primeira</option>
                   <option value="2">Segunda</option>
                   <option value="3">Terceira</option>
@@ -45,8 +45,8 @@
                 </select>    
               </div>
           </div>
-          <button class="btn">Salvar</button>
-        </form>
+          <button class="btn" (click)="createQuestion()">Salvar</button>
+        </div>
       </div>
     
 </section>

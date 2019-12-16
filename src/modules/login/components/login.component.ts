@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
-import { AuthService } from "angularx-social-login";
-import { SocialUser } from "angularx-social-login"
+import { AuthService, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
+
 import { LoginService } from '../service/login.service';
 import { UserService } from '../service/user/user.service';
+import { UserModel, UserLogin } from 'src/modules/home/components/user.model';
 
 
 @Component({
@@ -16,38 +16,44 @@ import { UserService } from '../service/user/user.service';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private loginService: LoginService, private userService: UserService, private router: Router) { }
+  private userData: UserLogin;
+
+  constructor(
+    private authService: AuthService, 
+    private loginService: LoginService, 
+    private userService: UserService, 
+    private router: Router) { }
+
+  ngOnInit() {
+ 
+  }
 
   login() {
+
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
     this.loginService.login().then((googleResponse) => {
-      if (this.userService.getUser) {
+      
+      if (this.userService.getUser) {    
         
-      } else {
-        let user = {
-          idGoogle: googleResponse.id,
+        this.userData = {
           name: googleResponse.name,
           email: googleResponse.email
         }
-        this.userService.registerUser(user).subscribe((user) => {
-          console.log(user)
-          console.log(googleResponse)
-        });
+
+        this.loginService.sendUser(this.userData).subscribe((response: UserLogin) =>
+          this.userData = response
+        )
+
       }
+      
       this.router.navigateByUrl("/home")
     });
   }
 
+
   signOut() {
     this.authService.signOut();
-  }
-
-  ngOnInit() {
-    // this.authService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   this.loggedIn = (user != null);
-    //   console.log(this.user)
-    // });
   }
 
 }

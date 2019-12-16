@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogConfig } from '@angular/material/dialog';
-import { UserModel, UserData } from '../user.model';
-import { SocialUser } from 'angularx-social-login';
+
+import { UserModel } from '../user.model';
+import { SocialUser, AuthService } from 'angularx-social-login';
 import { HomeService } from '../../service/home.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-modal-input-info',
@@ -13,32 +12,35 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ModalInputInfoComponent implements OnInit {
 
   private googleUser: SocialUser;
-
-  private userData: UserData;
+  private userData: UserModel;
   private userProject: String;
   private userPOD: String;
   private userLocation: String;
-  private dtInitOnboarding: Date;
 
-  constructor(private homeService: HomeService) { }
+  constructor(
+    private homeService: HomeService,
+    private authService: AuthService
+
+    ) { }
 
   ngOnInit() {
-
+    this.authService.authState.subscribe((googleUser) => {
+      this.googleUser = googleUser;
+    });
   }
 
   save(){
-    // this.userData.name = this.googleUser.firstName;
-    // this.userData.email = this.googleUser.email;
-    this.userData.email = 'alessandra.moreira@zup.com.br'
-    this.userData.name =  'Alessandra'
+    this.userData = new UserModel();
+
+    this.userData.name =  this.googleUser.name
+    this.userData.email = this.googleUser.email
     this.userData.location = this.userLocation;
     this.userData.project = this.userProject;
     this.userData.POD = this.userPOD;
 
-    this.homeService.postUser(this.userData).subscribe((response : UserData) =>
-    this.userData = response
+    this.homeService.postUser(this.userData).subscribe((response : UserModel) =>
+      this.userData = response
     )
-    console.log(this.userData)
 
   }
 

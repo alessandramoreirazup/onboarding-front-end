@@ -9,17 +9,14 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly urlPost = '';
+  private readonly urlPost = 'https://onboardingpgg.herokuapp.com/zupper';
 
   httpOptions = {
     headers: new HttpHeaders ({
-      'Content-Type':  'application/json',
+      'Content-Type':  'application/json; charset=UTF-8',
       'Authorization': ''
     })
   };
-
-  getCurrentStep(){
-  }
 
   postUser(user: UserModel){
     console.log(user)
