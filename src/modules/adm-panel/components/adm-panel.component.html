@@ -1,5 +1,10 @@
 <section class="table-admin">
-
+  <h4 class="white-text">Zuppers (3)</h4>
+    <div class="options">
+      <button class="btn question-page" [routerLink]="['/input-questions']">+ Cadastrar Perguntas</button>
+    </div>
+  <br>
+  <br>
   <table class="bg-white responsive-table bordered striped centered">
     <thead class="head-table text-white">
     <tr>
@@ -7,7 +12,8 @@
       <th>Email</th>
       <th>Localidade</th>
       <th>Data de Início</th>
-      <th>Pontuação</th>
+      <th>Fase</th>
+      <th>% Acertos</th>
     </tr>
   </thead>
   
@@ -16,24 +22,34 @@
       <td>Alessandra Moreira</td>
       <td>alessandra.moreira@zup.com.br</td>
       <td>São Paulo</td>
+      <td>20/12/19</td>
+      <td>Tecnologia</td>
       <td>
-          <a class="btn-floating">3</a>
+        <a class="btn-floating" [ngClass]="
+          {
+            'alert-bg': 30 >= porcentagemAcertos,
+            'medium-bg': porcentagemAcertos > 30 && 60 > porcentagemAcertos 
+          }"  >{{ porcentagemAcertos }}</a>
       </td>
     </tr>
     <tr>
       <td>Eduardo Pereira</td>
       <td>eduardo.pereira@zup.com.br</td>
       <td>São Paulo</td>
+      <td>15/12/19</td>
+      <td>Cultura</td>
       <td>
-        <a class="btn-floating">3</a>
+        <a class="btn-floating alert-bg">30</a>
       </td>
     </tr>
     <tr>
       <td>Beatriz Moraes</td>
       <td>beatriz.moraes@zup.com.br</td>
       <td>São Paulo</td>
+      <td>10/12/19</td>
+      <td>Cultura</td>
       <td>
-        <a class="btn-floating">3</a>
+        <a class="btn-floating">80</a>
       </td>
 
     </tr>

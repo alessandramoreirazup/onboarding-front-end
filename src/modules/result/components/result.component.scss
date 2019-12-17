@@ -4,13 +4,18 @@
 }
 
 .subtitle{
-    font-size: 1.5em
+    font-size: 1.2em
 }
 
 .vertical-align{
     padding-top: 10%
 }
 
-:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
-    stroke:  #A5C138;
+.link{
+    color: whitesmoke;
+    text-decoration: underline;
+
+    &:hover{
+        color: #A5C138;
+    }
 }

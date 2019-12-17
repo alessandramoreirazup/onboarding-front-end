@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HomeService } from '../service/home.service';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { MatDialogModule, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+import { UserModel } from './user.model';
+import { HomeService } from '../service/home.service';
+import { ModalInputInfoComponent } from './modal-input-info/modal-input-info.component';
+
+
 
 @Component({
   selector: 'app-home',
@@ -11,16 +17,42 @@ import { SocialUser } from "angularx-social-login";
 })
 export class HomeComponent implements OnInit {
 
-  private user: SocialUser;
+  private googleUser: SocialUser;
   private loggedIn: boolean;
+  private photoUrl: any;
 
-  constructor(private authService: AuthService) { }
+
+  constructor(
+    private homeService: HomeService,
+    private authService: AuthService,
+    private modal: MatDialog
+    ) { }
 
   ngOnInit() {
-      this.authService.authState.subscribe((user) => {
-        this.user = user;
-        this.loggedIn = (user != null);
-      });
+
+    this.openDialog();
+
+    this.getCurrentUser();
+    
   }
 
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '50%';
+
+    this.modal.open(ModalInputInfoComponent, {
+      width: '80%',
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  getCurrentUser(){
+    this.authService.authState.subscribe((googleUser) => {
+      this.googleUser = googleUser;
+    });
+  }
 }
