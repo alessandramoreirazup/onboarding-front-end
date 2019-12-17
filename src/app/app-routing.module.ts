@@ -11,12 +11,12 @@ import { DashboardComponent } from 'src/modules/dashboard/components/dashboard.c
 import { InputQuestionsComponent } from 'src/modules/input-questions/components/input-questions.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent }, 
+  { path: '', component: LoginComponent}, 
   { path: 'quiz', component: QuizComponent},
   { path: 'theme', component: ThemeComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'result', component: ResultComponent },
-  { path: 'admpanel', component: AdmPanelComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
+  { path: 'result', component: ResultComponent, canActivate: [LoginGuard] },
+  { path: 'admpanel', component: AdmPanelComponent, canActivate: [LoginGuard] }
   { path: 'input-questions', component: InputQuestionsComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];

@@ -10,16 +10,12 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(userId) {
-    return this.http.get(this.url)
+  getUser(username) {
+    return this.http.get(this.url, {headers: { username }})
   }
 
   registerUser(user) {
     console.log(user)
     return this.http.post(this.url, user)
-    
   }
-
-
-
 }
