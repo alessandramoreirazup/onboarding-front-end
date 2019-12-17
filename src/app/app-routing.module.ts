@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'theme', component: ThemeComponent },
   { path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
   { path: 'result', component: ResultComponent, canActivate: [LoginGuard] },
-  { path: 'admpanel', component: AdmPanelComponent }
+  { path: 'admpanel', component: AdmPanelComponent, canActivate: [LoginGuard] }
 ];
 
 
