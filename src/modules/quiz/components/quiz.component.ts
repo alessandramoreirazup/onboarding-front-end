@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuizService } from '../service/quiz.service';
+import { AlternativeModel, AlternativeData } from '../../quiz/components/alternative.model';
 import { fadeAnimation } from 'src/app/animations';
 
 
@@ -17,6 +18,7 @@ export class QuizComponent implements OnInit {
     private quizService : QuizService,
     private route: ActivatedRoute,
     private router: Router,
+
     ) { } 
 
   allSteps: any;
@@ -24,9 +26,11 @@ export class QuizComponent implements OnInit {
   currentQuestion: any;
   filteredQuestions: any;
 
-
+  alternative: AlternativeData;
   value: number = 0;
+  postData: AlternativeData;
 
+  data: String
 
   ngOnInit() {
     this.getCurrentQuestion();
@@ -39,8 +43,20 @@ export class QuizComponent implements OnInit {
     return this.currentQuestion = this.filteredQuestions[this.value];
   }
 
-  verifyAnswer(answer: any){
+  // sendAlternative(){
+  
+  // }
+
+  verifyAnswer(answer: AlternativeModel){
+    this.alternative = new AlternativeModel()
+ 
+    this.alternative.id = answer.id
+    this.alternative.description = answer.description
     
+    this.quizService.postData(this.alternative).subscribe((res : AlternativeData)=> 
+      this.alternative = res
+    )
+
     if(this.value === this.filteredQuestions.length -1){
       this.router.navigate(['/result']);
     }
@@ -61,6 +77,7 @@ export class QuizComponent implements OnInit {
     }
     return newArray;
   }
+
 
   getCurrentQuestion(){
     this.quizService.getAll()

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule }  from '@angular/forms';
 
 import { InputQuestionsComponent } from './components/input-questions.component';
-
-
 import { routing } from 'src/app/app-routing.module';
 
 
@@ -13,7 +12,8 @@ import { routing } from 'src/app/app-routing.module';
   ],
   imports: [
     CommonModule,
-    routing
+    routing,
+    FormsModule
   ],
   exports:[
     InputQuestionsComponent

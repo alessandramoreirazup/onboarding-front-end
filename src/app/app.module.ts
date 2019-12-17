@@ -12,6 +12,7 @@ import { ThemeModule } from '../modules/theme/theme.module';
 import { LoginModule } from '../modules/login/login.module';
 import { ResultModule } from '../modules/result/result.module';
 import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
+import { DashboardModule } from '../modules/dashboard/dashboard.module';
 import { InputQuestionsModule } from '../modules/input-questions/input-questions.module';
 
 
@@ -31,7 +32,8 @@ import { InputQuestionsModule } from '../modules/input-questions/input-questions
     LoginModule,
     ResultModule,
     AdmPanelModule,
-    InputQuestionsModule
+    InputQuestionsModule,
+    DashboardModule
   ],
   exports:[
     QuizModule,
@@ -40,7 +42,8 @@ import { InputQuestionsModule } from '../modules/input-questions/input-questions
     ThemeModule,
     ResultModule,
     AdmPanelModule,
-    InputQuestionsModule
+    InputQuestionsModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
