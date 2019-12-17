@@ -36,7 +36,7 @@ export class ModalInputInfoComponent implements OnInit {
     this.userData.email = this.googleUser.email
     this.userData.location = this.userLocation;
     this.userData.project = this.userProject;
-    this.userData.POD = this.userPOD;
+    this.userData.pod = this.userPOD;
 
     this.homeService.postUser(this.userData).subscribe((response : UserModel) =>
       this.userData = response

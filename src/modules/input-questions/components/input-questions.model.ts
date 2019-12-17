@@ -3,11 +3,12 @@ export class QuestionModel{
     description: String
     alternative1: String
     alternative2: String
-    
+
+    //queria criar um array dessas alternativas, que no total serão 4
+    alternatives: Array<AlternativeQuestionModel>
     //atributos da alternative
     altDescription: String
     altCorrect: number
-    //queria criar um array dessas alternativas, que no total serão 4
 }
 
 export class AlternativeQuestionModel{

@@ -3,7 +3,7 @@ export class UserModel{
     name: String
     location: String
     project: String
-    POD: String
+    pod: String
 }
 
 export class UserLogin{

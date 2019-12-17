@@ -12,7 +12,7 @@ export class LoginService {
 
   public user: SocialUser;
   private loggedIn: boolean;
-  private readonly urlPost = '';
+  private readonly urlPost = 'https://onboardingpgg.herokuapp.com/zupper/exists';
 
   httpOptions = {
     headers: new HttpHeaders ({
@@ -39,7 +39,8 @@ export class LoginService {
   }
 
   sendUser(user: UserLogin){
-    return this.http.post(this.urlPost, user, this.httpOptions)
+    console.log(user)
+    return this.http.post(this.urlPost, user)
   }
 
 }
