@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.authService.authState.subscribe((googleUser) => {
+      this.googleUser = googleUser;
+    });
 
     this.openDialog();
 
@@ -41,7 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog() {
-
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -56,11 +58,6 @@ export class HomeComponent implements OnInit {
 
 
   getCurrentUser(){
-      
-    this.authService.authState.subscribe((googleUser) => {
-      this.googleUser = googleUser;
-    });
-
     return this.homeService.getUser()
     .subscribe((user: any) => {
       return this.currentUser = user

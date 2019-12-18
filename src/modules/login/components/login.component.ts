@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         email: googleResponse.email
       }
 
-      this.sendUserResponse()
+      this.sendUserResponse();
 
       this.router.navigateByUrl("/home")
     });
