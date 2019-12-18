@@ -34,23 +34,24 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login().then((googleResponse) => {
       
-      if (this.userService.getUser) {    
-        
-        this.userData = {
-          name: googleResponse.name,
-          email: googleResponse.email
-        }
-
-        this.loginService.sendUser(this.userData).subscribe((response: UserLogin) =>
-          this.userData = response
-        )
-
+      this.userData = {
+        name: googleResponse.name,
+        email: googleResponse.email
       }
-      
+
+      this.sendUserResponse()
+
       this.router.navigateByUrl("/home")
     });
   }
 
+  sendUserResponse(){
+    this.loginService.sendUser(this.userData).subscribe((response: UserLogin) => {
+      this.userData = response
+      console.log(this.userData)
+    }
+    )
+  }
 
   signOut() {
     this.authService.signOut();

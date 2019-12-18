@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../user.model';
 import { SocialUser, AuthService } from 'angularx-social-login';
 import { HomeService } from '../../service/home.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { LoginService } from 'src/modules/login/service/login.service';
 
 @Component({
   selector: 'app-modal-input-info',
@@ -19,11 +21,13 @@ export class ModalInputInfoComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private loginService: LoginService
 
     ) { }
 
   ngOnInit() {
+
     this.authService.authState.subscribe((googleUser) => {
       this.googleUser = googleUser;
     });

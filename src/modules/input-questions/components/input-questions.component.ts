@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { InputQuestionsService } from '../service/input-questions.service';
 import { QuestionModel, AlternativeQuestionModel } from './input-questions.model';
+import { HomeService } from 'src/modules/home/service/home.service';
 
 @Component({
   selector: 'app-input-questions',
@@ -19,10 +20,19 @@ export class InputQuestionsComponent implements OnInit {
     private questionDescription: String;
     private alternatives: Array<AlternativeQuestionModel>;
     
-    private alternative1: String;
-    private alternative2: String;
+    private alternative1: AlternativeQuestionModel;
+    private alternative2: AlternativeQuestionModel;
+    private alternative3: AlternativeQuestionModel;
+    private alternative4: AlternativeQuestionModel;
+
     private altCorrect: number;
 
+    alternativeArr = [
+      { label: 'Primeira', value: this.alternative1},
+      { label: 'Segunda', value: this.alternative2},
+      { label: 'Terceira', value: this.alternative3},
+      { label: 'Quarta', value: this.alternative4},
+    ]
 
   ngOnInit() {
 
@@ -33,10 +43,14 @@ export class InputQuestionsComponent implements OnInit {
 
     this.newQuestion.idStep = this.idStep;
     this.newQuestion.description = this.questionDescription;
-    this.newQuestion.alternative1 = this.alternative1;
-    this.newQuestion.alternative2 = this.alternative2;
-    this.newQuestion.altCorrect = this.altCorrect;
+    this.newQuestion.alternatives = this.alternatives
    
+    this.alternatives.push(this.alternative1);
+    this.alternatives.push(this.alternative2);
+    this.alternatives.push(this.alternative3);
+    this.alternatives.push(this.alternative4);
+    
+
     this.inputQuestionService.sendNewQuestion(this.newQuestion).subscribe((question: QuestionModel) =>
       this.newQuestion = question
     )

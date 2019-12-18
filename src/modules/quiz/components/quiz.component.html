@@ -14,7 +14,7 @@
                     <hr class="border-green">
                     <p class="description text-white">{{ currentQuestion.description }} </p>
                     <div class="options-section" *ngFor="let alternatives of currentQuestion.alternatives">
-                        <button class="option back-pulse" appDebounceClick (debounceClick)="verifyAnswer(alternatives)" [debounceTime]="1100"> {{ alternatives.description }}</button>
+                        <button class="option back-pulse" appDebounceClick (debounceClick)="sendAnswer(alternatives)" [debounceTime]="1100"> {{ alternatives.description }}</button>
                         <br>
                     </div>
                 </div>

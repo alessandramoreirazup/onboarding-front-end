@@ -15,7 +15,6 @@ export class UserService {
   }
 
   registerUser(user) {
-    console.log(user)
     return this.http.post(this.url, user)
     
   }

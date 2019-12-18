@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
+import { map } from 'rxjs/operators';
+
 import { UserModel, UserLogin } from 'src/modules/home/components/user.model';
 
 @Injectable({
@@ -13,6 +15,8 @@ export class LoginService {
   public user: SocialUser;
   private loggedIn: boolean;
   private readonly urlPost = 'https://onboardingpgg.herokuapp.com/zupper/exists';
+  private response;
+
 
   httpOptions = {
     headers: new HttpHeaders ({
@@ -39,8 +43,12 @@ export class LoginService {
   }
 
   sendUser(user: UserLogin){
-    console.log(user)
     return this.http.post(this.urlPost, user)
+    .pipe(
+      map( response => {
+        return response 
+      })
+    ) 
   }
 
 }

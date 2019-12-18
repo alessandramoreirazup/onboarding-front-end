@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { MatDialogModule, MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { UserModel } from './user.model';
 import { HomeService } from '../service/home.service';
@@ -18,6 +18,7 @@ import { ModalInputInfoComponent } from './modal-input-info/modal-input-info.com
 export class HomeComponent implements OnInit {
 
   private googleUser: SocialUser;
+  private currentUser: any;
   private loggedIn: boolean;
   private photoUrl: any;
 
@@ -34,6 +35,9 @@ export class HomeComponent implements OnInit {
 
     this.getCurrentUser();
     
+    if(this.getCurrentUser()){
+      this.modal.closeAll()
+    }
   }
 
   openDialog() {
@@ -50,9 +54,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
   getCurrentUser(){
+      
     this.authService.authState.subscribe((googleUser) => {
       this.googleUser = googleUser;
     });
+
+    return this.homeService.getUser()
+    .subscribe((user: any) => {
+      return this.currentUser = user
+    } 
+    )
+
   }
 }

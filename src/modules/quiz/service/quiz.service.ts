@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 import { AlternativeModel } from '../components/alternative.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({ 
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class QuizService {
   
   constructor(private http: HttpClient) { }
 
-  private readonly apiUrl = 'http://demo7269457.mockable.io/user/1';
+  private readonly apiUrl = 'https://onboardingpgg.herokuapp.com/zupper/alessandra.moreira@zup.com.br';
 
-  private apiPost = 'https://demo2971522.mockable.io/alternative';
+  private apiPost = 'https://onboardingpgg.herokuapp.com/answer';
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,7 +27,7 @@ export class QuizService {
     return this.http.get(this.apiUrl);
   }
 
-  postData(alternative: AlternativeModel){
+  postAlternative(alternative: AlternativeModel){
     console.log(alternative)
     return this.http.post(this.apiPost, alternative, this.httpOptions)
   }

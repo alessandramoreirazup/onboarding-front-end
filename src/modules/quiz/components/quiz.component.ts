@@ -36,24 +36,20 @@ export class QuizComponent implements OnInit {
     this.getCurrentQuestion();
   }
 
-  next() {
+  nextQuestion() {
 
     this.value++
 
     return this.currentQuestion = this.filteredQuestions[this.value];
   }
 
-  // sendAlternative(){
-  
-  // }
-
-  verifyAnswer(answer: AlternativeModel){
+  sendAnswer(answer: AlternativeModel){
     this.alternative = new AlternativeModel()
  
     this.alternative.id = answer.id
     this.alternative.description = answer.description
     
-    this.quizService.postData(this.alternative).subscribe((res : AlternativeData)=> 
+    this.quizService.postAlternative(this.alternative).subscribe((res : AlternativeData)=> 
       this.alternative = res
     )
 
@@ -61,7 +57,7 @@ export class QuizComponent implements OnInit {
       this.router.navigate(['/result']);
     }
 
-    this.next();
+    this.nextQuestion();
   }
 
   verifyQuestion(question: any){
@@ -77,7 +73,6 @@ export class QuizComponent implements OnInit {
     }
     return newArray;
   }
-
 
   getCurrentQuestion(){
     this.quizService.getAll()
