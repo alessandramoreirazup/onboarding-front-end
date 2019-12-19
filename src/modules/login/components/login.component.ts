@@ -4,7 +4,6 @@ import { GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
 
 import { LoginService } from '../service/login.service';
-import { UserService } from '../service/user/user.service';
 import { UserModel, UserLogin } from 'src/modules/home/components/user.model';
 
 
@@ -20,8 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService, 
-    private loginService: LoginService, 
-    private userService: UserService, 
+    private loginService: LoginService,
     private router: Router) { }
 
   ngOnInit() {

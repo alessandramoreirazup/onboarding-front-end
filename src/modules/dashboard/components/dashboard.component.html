@@ -1,5 +1,5 @@
 <!-- LEFT SIDEBAR	 -->
-<div class="main-dashboard">
+<div class="main-dashboard" *ngIf="user">
     <ul id="sidenav-1" class="sidenav sidenav-fixed">
         <li>
             <div class="user-view">
@@ -11,7 +11,7 @@
             <div class="divider"></div>
             <br>
         </li>
-        <li><a href="#!">Gerenciar questões</a></li>
+        <li><a href="#!" [routerLink]="['/input-questions']">Gerenciar perguntas</a></li>
         <li><a href="#!" [routerLink]="['/admpanel']">Relatório detalhado</a></li>
         <li><a class="subheader">Gerenciar...</a></li>
     </ul>

@@ -6,12 +6,12 @@
           <div class="big"></div>
         </div>
     </div>
-    <section class="center container">
+    <section class="center container"  *ngIf="user">
         <p class="title white-text">Obrigado por responder, {{ user.firstName }}!</p>
         <img src="http://gif.co/SGvF.gif" width="180" height="180">        
         <p class="white-text subtitle">
             Você marcou {{value}} pontos!   
-            <br><a href="#" class="link">Veja mais conteúdos</a> pra ser mestre na nossa cultura Zup!</p>
+            <br><a href="#" class="link">Veja mais conteúdos</a> pra ser Jedi na nossa cultura Zup!</p>
             <hr class="border-green">
             <br>
         <button class="btn" [routerLink]="['/home']">Terminar</button>
