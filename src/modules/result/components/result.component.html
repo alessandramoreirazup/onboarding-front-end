@@ -7,13 +7,40 @@
         </div>
     </div>
     <section class="center container"  *ngIf="user">
-        <p class="title white-text">Obrigado por responder, {{ user.firstName }}!</p>
-        <img src="https://media1.tenor.com/images/c344e62a0c4bb41a3d4e25fba97abd04/tenor.gif?itemid=4944247" width="350px">        
-        <p class="white-text subtitle">
-            Você marcou {{value}} pontos!   
-            <br><a href="#" class="link">Veja mais conteúdos</a> pra ser Jedi da nossa cultura Zup!</p>
-            <hr class="border-green">
-            <br>
+        <p class="title white-text">Obrigada por responder, {{ user.firstName }}!</p>
+        <p class="white-text subtitle"> Você marcou {{currentUser.scoreBoard}} pontos!  </p>
+        
+        <div class="bad-score" *ngIf="60 >= currentUser.scoreBoard">
+            <img src="https://media3.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif" alt="Yoda dizendo 'Much to Learn you still have'">
+            <p class="white-text subtitle" >
+                Eu sei que nem sempre a gente consegue absorver tudo, né? 
+                <br>
+                Pra te ajudar nisso <a href="{{currentUser.zupper.step.link}}" class="link">
+                tem um conteúdo</a> que vai te ajudar bastante.
+            </p>
+        </div>
+
+        <div class="medium-score" *ngIf="90 > currentUser.scoreBoard && currentUser.scoreBoard > 60">
+            <img src="https://media1.tenor.com/images/c344e62a0c4bb41a3d4e25fba97abd04/tenor.gif?itemid=4944247" alt="Finn dando um joinha" width="350px">        
+            <p class="white-text subtitle">
+                Você se saiu bem, mas eu tenho 
+            <a href="{{currentUser.zupper.step.link}}" class="link">
+                conteúdos aqui</a> que vão te ajudar a conhecer a gente cada vez melhor. 
+            </p>
+        </div>
+
+        <div class="good-score" *ngIf="currentUser.scoreBoard >= 90">
+            <img src="https://media3.giphy.com/media/404ovuVEwF63S/source.gif" alt="Rey dançando e apontando para você">
+            <p class="white-text subtitle">
+                Caraca, estamos felizes com seu desempenho! 
+                <br>  
+                Mas como queremos que você conheça a gente cada vez melhor, 
+                que tal saber cada vez mais sobre a gente?
+            </p>    
+        </div>
+
+        <hr class="border-green">
+        <br>
         <button class="btn" [routerLink]="['/home']">Terminar</button>
     </section>
     

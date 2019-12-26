@@ -61,4 +61,8 @@ body{
         background-color: #A5C138;
         color: #fff;
     }
+    
+    .no-click-backdrop {
+        pointer-events: none;
+    }
 }

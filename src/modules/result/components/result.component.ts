@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from 'src/modules/quiz/service/quiz.service';
-
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+
+import { ResultService } from '../service/result.service';
 
 
 @Component({
@@ -12,20 +12,34 @@ import { SocialUser } from "angularx-social-login";
 })
 export class ResultComponent implements OnInit {
 
-  private user: SocialUser;
-  private loggedIn: boolean;
+  public user: SocialUser;
+  public loggedIn: boolean;
+  public currentUser: any;
 
   constructor(
-    private quizService: QuizService,
-    private authService: AuthService) { }
+    private resultService: ResultService,
+    private authService: AuthService
+  ) { }
   
-  value: number = 30;
+  value: number = 99; // valor de testes
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
     });
+
+    this.getUserResult();
   }
 
+
+  getUserResult(){
+    return this.resultService.getResult()
+    .subscribe((user) => {
+      this.currentUser = user
+      console.log(this.currentUser)
+
+    })
+  }
+  
 }

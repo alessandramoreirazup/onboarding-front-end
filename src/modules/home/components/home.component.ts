@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 
 import { UserModel } from './user.model';
 import { HomeService } from '../service/home.service';
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private authService: AuthService,
-    private modal: MatDialog,
-    ) { }
+    private modal: MatDialog
+    ) {   }
 
     private googleUser: SocialUser;
     private currentUser: UserModel;
@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
+  
 
     this.modal.open(ModalInputInfoComponent, {
       width: '50%',
@@ -57,7 +58,7 @@ export class HomeComponent implements OnInit {
     .subscribe((user: UserModel) => {
       this.currentUser = user
 
-      if(!this.currentUser){
+      if(this.currentUser){
         this.openDialog()
       }
     })

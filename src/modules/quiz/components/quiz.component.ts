@@ -47,7 +47,6 @@ export class QuizComponent implements OnInit {
     this.alternative = new AlternativeModel()
  
     this.alternative.id = answer.id
-    this.alternative.description = answer.description
     
     this.quizService.postAlternative(this.alternative).subscribe((res : AlternativeData)=> 
       this.alternative = res
