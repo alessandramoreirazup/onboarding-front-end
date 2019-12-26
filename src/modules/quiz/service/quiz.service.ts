@@ -19,12 +19,6 @@ export class QuizService {
   private apiPost = 'https://onboardingpgg.herokuapp.com/answer';
   
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': ''
-    })
-  };
 
   getAll(){
     return this.http.get(this.apiUrl);
@@ -32,7 +26,7 @@ export class QuizService {
 
   postAlternative(alternative: AlternativeModel){
     console.log(alternative)
-    return this.http.post(this.apiPost, alternative, this.httpOptions)
+    return this.http.post(this.apiPost, alternative)
   }
 
 }

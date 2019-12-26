@@ -1,22 +1,21 @@
 <div class="sky">
-        <mat-progress-bar mode="determinate" value="50" color="warn"></mat-progress-bar>
-
-        <div class="diagonal-sky-bg">
-           <div class="stars">
-              <div class="small"></div>
-              <div class="medium"></div>
-              <div class="big"></div>
+    <mat-progress-bar mode="determinate" [value]="progressValue" color="warn"></mat-progress-bar>
+    <div class="diagonal-sky-bg">
+       <div class="stars">
+          <div class="small"></div>
+          <div class="medium"></div>
+          <div class="big"></div>
+        </div>
+    </div>
+    <section class="counter container margin-top-section " *ngIf="currentQuestion">
+        <div class="center-align question-bg">
+            <p class="title center text-white"> Questão {{ currentQuestion.id }}</p>
+            <hr class="border-green">
+            <p class="description text-white">{{ currentQuestion.description }} </p>
+            <div class="options-section" *ngFor="let alternatives of currentQuestion.alternatives">
+                <button class="option back-pulse" appDebounceClick (debounceClick)="sendAnswer(alternatives)" [debounceTime]="1100"> {{ alternatives.description }}</button>
+                <br>
             </div>
         </div>
-            <section class="counter container margin-top-section " *ngIf="currentQuestion">
-                <div class="center-align question-bg">
-                    <p class="title center text-white"> Questão {{ currentQuestion.id }}</p>
-                    <hr class="border-green">
-                    <p class="description text-white">{{ currentQuestion.description }} </p>
-                    <div class="options-section" *ngFor="let alternatives of currentQuestion.alternatives">
-                        <button class="option back-pulse" appDebounceClick (debounceClick)="sendAnswer(alternatives)" [debounceTime]="1100"> {{ alternatives.description }}</button>
-                        <br>
-                    </div>
-                </div>
-            </section>
-      </div>
+    </section>
+</div>

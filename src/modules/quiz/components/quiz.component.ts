@@ -19,7 +19,7 @@ export class QuizComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
 
-    ) { } 
+  ) { } 
 
   allSteps: any;
   allQuestions: any;
@@ -27,10 +27,11 @@ export class QuizComponent implements OnInit {
   filteredQuestions: any;
 
   alternative: AlternativeData;
-  value: number = 0;
   postData: AlternativeData;
-
-  data: String
+  index: number = 0;
+  data: String;
+  
+  progressValue: number = 0;
 
   ngOnInit() {
     this.getCurrentQuestion();
@@ -38,12 +39,14 @@ export class QuizComponent implements OnInit {
 
   nextQuestion() {
 
-    this.value++
+    this.index++
 
-    return this.currentQuestion = this.filteredQuestions[this.value];
+    return this.currentQuestion = this.filteredQuestions[this.index];
   }
 
   sendAnswer(answer: AlternativeModel){
+    this.progressValue += 20;
+
     this.alternative = new AlternativeModel()
  
     this.alternative.id = answer.id
@@ -52,7 +55,7 @@ export class QuizComponent implements OnInit {
       this.alternative = res
     )
 
-    if(this.value === this.filteredQuestions.length -1){
+    if(this.index === this.filteredQuestions.length -1){
       this.router.navigate(['/result']);
     }
 
@@ -93,7 +96,7 @@ export class QuizComponent implements OnInit {
 
         this.reverseArray(this.filteredQuestions)
 
-        this.currentQuestion = this.filteredQuestions[this.value];
+        this.currentQuestion = this.filteredQuestions[this.index];
 
         return this.currentQuestion;
         
