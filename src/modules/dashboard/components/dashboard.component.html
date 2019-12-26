@@ -2,8 +2,8 @@
 <div class="main-dashboard" *ngIf="user">
     <ul id="sidenav-1" class="sidenav sidenav-fixed">
         <li>
-            <div class="user-view">
-                <p href="#user"><img class="circle center" [src]="user.photoUrl"></p>
+            <div class="user-view center">
+                <p><img class="circle center" [src]="user.photoUrl"></p>
                 <p href="#name"><span class="name center">Oi, {{ user.firstName }}!</span></p>
                 <p href="#email"><span class="email center">{{ user.email }}</span></p>
             </div>
@@ -13,51 +13,79 @@
         </li>
         <li><a href="#!" [routerLink]="['/input-questions']">Gerenciar perguntas</a></li>
         <li><a href="#!" [routerLink]="['/admpanel']">Relatório detalhado</a></li>
-        <li><a class="subheader">Gerenciar...</a></li>
+        <li><a class="subheader">...</a></li>
+        <div class="credits center">
+            Feito com <span class="heart">❤</span> por PGG
+        </div>
     </ul>
+    <section class="row container">
 
-    <div class="container theme-data ">
-        <div class="col s12 m7 theme-card">
-            <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content center">
-                        <h4>70%</h4>
-                        <p>de algo</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Dado absoluto: 423423</a>
+        <div class="theme-data center">
+            <div class="col s12 theme-card">
+                <div class="card horizontal">
+                    <div class="card-stacked text-white bg-green">
+                        <h5>Cultura</h5>
+                        <hr class="divider">
+                        <span class="main-value">70%</span>
+                        <span>de acertos dos Zuppers</span>
+                        <br>
+                        <div class="total center">
+                            Total: 1243
+                        </div> 
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col s12 m7 theme-card">
+            </div> 
+        <div class="col s12 theme-card">
             <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content center">
-                        <h4>70%</h4>
-                        <p>de algo</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Dado absoluto: 423423</a>
-                    </div>
+                <div class="card-stacked text-white bg-lightblue">
+                    <h5>Tecnologia</h5>
+                    <hr class="divider">
+                    <span class="main-value">70%</span>
+                    <span>de acertos dos Zuppers</span>
+                    <br>
+                    <div class="total center">
+                        Total: 1243
+                    </div> 
                 </div>
             </div>
-        </div>
-
-        <div class="col s12 m7 theme-card">
+        </div> 
+        <div class="col s12 theme-card">
             <div class="card horizontal">
-                <div class="card-stacked">
-                    <div class="card-content center">
-                        <h4>70%</h4>
-                        <p>de algo</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">Dado absoluto: 423423</a>
-                    </div>
+                <div class="card-stacked text-white bg-green bg-orange">
+                    <h5>Ética</h5>
+                    <hr class="divider">
+                    <span class="main-value">70%</span>
+                    <span>de acertos dos Zuppers</span>
+                    <br>
+                    <div class="total center">
+                        Total: 1243
+                    </div> 
                 </div>
             </div>
-        </div>
+        </div>   
     </div>
-
+        <div class="col s6">
+            <google-chart [type]="type" [data]="myData" [width]="pieWidth"></google-chart>
+        </div>
+        <div class="col s6">
+            <google-chart [type]="type" [data]="myNewData" [options]="myOptions" [width]="pieWidth"></google-chart>
+        </div>
+        <div class="col s6">
+            <div class="text-white chart-filters">Filtros: 
+                <button class="filter-btn">POD</button> 
+                <button class="filter-btn">Regional</button>
+            </div>
+            <google-chart [type]="typeBar" [data]="myData" [options]="myOptions" [width]="barWidth" [height]="barHeight"></google-chart>
+        </div>
+        <div class="col s6">
+            <div class="theme-filters">
+                <button class="bg-green btn theme-btn">Cultura</button>
+                <br>
+                <button class="btn theme-btn bg-lightblue">Tecnologia</button>
+                <br>
+                <button class="btn theme-btn bg-orange">Ética</button>
+            </div>
+        </div>
+</section>
+    
 </div>

@@ -12,18 +12,21 @@
             <option value="Campinas">Campinas</option>
           </select>  
       </div>
+    </div>
       <div class="row">
-        <div class="input-field col s6">
-          <input id="project" type="text" [(ngModel)]="userProject">
-          <label for="project">Projeto</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="POD" type="text" [(ngModel)]="userPOD">
-          <label for="POD">POD</label>
+        <div class="col s12">
+          <select class="browser-default text-black" [(ngModel)]="userPOD">
+            <option disabled selected>Qual a sua POD?</option>
+            <option value="">UAI POD</option>
+            <option value="">No Limits</option>
+            <option value="">Belo Horizonte</option>
+            <option value="">Joinville</option>
+            <option value="">Campinas</option>
+          </select>  
         </div>
       </div>
       <mat-dialog-actions class="center">
         <button class="btn center" (click)="save()">Enviar</button>
     </mat-dialog-actions>
-  </div>
+    <br>
 </mat-dialog-content>

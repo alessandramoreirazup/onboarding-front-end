@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
- 
+import { GoogleChartsModule } from 'angular-google-charts';
+
 import { DashboardComponent } from './components/dashboard.component';
 import { routing } from 'src/app/app-routing.module';
 
@@ -10,7 +11,8 @@ import { routing } from 'src/app/app-routing.module';
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
-    routing
+    routing,
+    GoogleChartsModule
   ]
 })
 export class DashboardModule { }

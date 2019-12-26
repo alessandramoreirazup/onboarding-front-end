@@ -43,6 +43,7 @@ export class LoginService {
   }
 
   sendUser(user: UserLogin){
+    console.log('user q eu mando', user)
     return this.http.post(this.urlPost, user)
     .pipe(
       map( response => {

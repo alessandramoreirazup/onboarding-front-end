@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     dialogConfig.width = '50%';
 
     this.modal.open(ModalInputInfoComponent, {
-      width: '80%',
+      width: '50%',
       panelClass: 'custom-modalbox'
     });
   }

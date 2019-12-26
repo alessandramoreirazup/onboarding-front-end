@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AdmPanelComponent } from './components/adm-panel.component';
 import { routing } from 'src/app/app-routing.module';
@@ -13,6 +14,7 @@ import { routing } from 'src/app/app-routing.module';
   imports: [
     CommonModule,
     MatExpansionModule,
+    MatPaginatorModule,
     routing
   ],
   exports:[

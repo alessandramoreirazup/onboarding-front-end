@@ -83,7 +83,7 @@ export class QuizComponent implements OnInit {
 
         this.allQuestions = this.allSteps.question
 
-        console.log(this.allQuestions)
+        console.log('todas as questões', this.allQuestions)
 
         this.filteredQuestions = this.allQuestions.filter((question) => {
           if(!question.answered){

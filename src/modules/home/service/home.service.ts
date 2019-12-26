@@ -25,10 +25,11 @@ export class HomeService {
   };
 
   getUser(email: String){
-    console.log(email)
+    
     return this.http.get(`https://onboardingpgg.herokuapp.com/zupper/${email}`)
     .pipe(
       map( response => {
+        console.log(response)
         return response 
       })
     ) 

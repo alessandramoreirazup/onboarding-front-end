@@ -16,7 +16,7 @@ export class InputQuestionsComponent implements OnInit {
   ) { }
 
     private newQuestion: QuestionModel;
-    private idStep: number;
+    private idStep: any = 'Selecione o tema';
     private questionDescription: String;
     private alternatives: Array<AlternativeQuestionModel>;
     
@@ -25,7 +25,7 @@ export class InputQuestionsComponent implements OnInit {
     private alternative3: AlternativeQuestionModel;
     private alternative4: AlternativeQuestionModel;
 
-    private altCorrect: number;
+    private altCorrect: any = 'Selecione a alternativa correta';
 
     alternativeArr = [
       { label: 'Primeira', value: this.alternative1},
@@ -45,11 +45,10 @@ export class InputQuestionsComponent implements OnInit {
     this.newQuestion.description = this.questionDescription;
     this.newQuestion.alternatives = this.alternatives
    
-    this.alternatives.push(this.alternative1);
-    this.alternatives.push(this.alternative2);
-    this.alternatives.push(this.alternative3);
-    this.alternatives.push(this.alternative4);
-    
+    this.alternativeArr.forEach(object => {
+     console.log('cada objeto', object)
+    });
+ 
 
     this.inputQuestionService.sendNewQuestion(this.newQuestion).subscribe((question: QuestionModel) =>
       this.newQuestion = question
