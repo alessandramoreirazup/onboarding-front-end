@@ -1,5 +1,7 @@
 <section class="table-admin">
   <h4 class="white-text">Zuppers ({{zuppers.length}})</h4>
+
+    <br/><br/>
     <div class="options">
       <button class="btn question-page" (click)="export()">
         <i class="material-icons left">cloud_download</i> Baixar em Excel</button>
@@ -22,7 +24,7 @@
     </tr>
   </thead>
   
-  <tbody *ngFor="let zupper of zuppers; let i = index;">
+  <tbody *ngFor="let zupper of zuppers">
     <tr>
       <td>{{zupper.name}}</td>
       <td>{{zupper.email}}</td>
@@ -47,16 +49,5 @@
      
     </tbody>
   </table>
-  <mat-paginator [length]="length"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="pageEvent = $event">
-  </mat-paginator>
 
-  <div *ngIf="pageEvent">
-    <h5>Page Change Event Properties</h5>
-    <div>List length: {{pageEvent.length}}</div>
-    <div>Page size: {{pageEvent.pageSize}}</div>
-    <div>Page index: {{pageEvent.pageIndex}}</div>
-  </div>
-</section>
+  </section>

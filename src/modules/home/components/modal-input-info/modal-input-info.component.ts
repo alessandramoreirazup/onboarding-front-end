@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialUser, AuthService } from 'angularx-social-login';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 import { UserModel, LocationObj, PodObj } from '../user.model';
 import { HomeService } from '../../service/home.service';
-import { LoginService } from 'src/modules/login/service/login.service';
-import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -16,9 +16,11 @@ export class ModalInputInfoComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) { }
 
+  public formUser: FormGroup
   private googleUser: SocialUser;
   private userData: UserModel;
   private userLocation: String = 'Onde você está?';
@@ -27,7 +29,6 @@ export class ModalInputInfoComponent implements OnInit {
   private podObj: PodObj;
   
   private locationOptions = [
-    { nameLocation: 'Onde você está?'},
     { nameLocation: 'São Paulo' },
     { nameLocation: 'Belo Horizonte' },
     { nameLocation: 'Uberlândia' },
@@ -67,6 +68,13 @@ export class ModalInputInfoComponent implements OnInit {
       }
     }
 
+  }
+
+  createForm(user: UserModel){
+    this.formUser = this.formBuilder.group({
+      pod: [user.pod],
+      location: [user.location]
+    })
   }
 
   save(){

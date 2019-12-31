@@ -8,8 +8,6 @@ import { HomeService } from '../service/home.service';
 import { ModalInputInfoComponent } from './modal-input-info/modal-input-info.component';
 
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -58,7 +56,7 @@ export class HomeComponent implements OnInit {
     .subscribe((user: UserModel) => {
       this.currentUser = user
 
-      if(this.currentUser){
+      if(!this.currentUser){
         this.openDialog()
       }
     })

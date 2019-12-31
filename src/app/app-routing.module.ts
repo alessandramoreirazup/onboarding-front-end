@@ -8,6 +8,7 @@ import { ResultComponent } from 'src/modules/result/components/result.component'
 import { AdmPanelComponent } from 'src/modules/adm-panel/components/adm-panel.component';
 import { DashboardComponent } from 'src/modules/dashboard/components/dashboard.component';
 import { InputQuestionsComponent } from 'src/modules/input-questions/components/input-questions.component';
+import { QuestionsListComponent } from 'src/modules/questions-list/components/questions-list.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent }, 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'result', component: ResultComponent },
   { path: 'admpanel', component: AdmPanelComponent },
   { path: 'input-questions', component: InputQuestionsComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'questions-list', component: QuestionsListComponent }
 ];
 
 

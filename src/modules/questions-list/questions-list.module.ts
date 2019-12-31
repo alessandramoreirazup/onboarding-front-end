@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { QuestionsListComponent } from './components/questions-list.component';
+import { routing } from 'src/app/app-routing.module';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    QuestionsListComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    routing
+  ],
+  exports: [
+    QuestionsListComponent
   ]
 })
 export class QuestionsListModule { }

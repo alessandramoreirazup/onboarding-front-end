@@ -21,7 +21,7 @@ export class ResultComponent implements OnInit {
     private authService: AuthService
   ) { }
   
-  value: number = 99; // valor de testes
+  value: number = 70; // valor de testes
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {

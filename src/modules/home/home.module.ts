@@ -6,7 +6,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule }  from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
+ 
 
 import { routing } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home.component';
@@ -27,7 +28,8 @@ import { ModalInputInfoComponent } from './components/modal-input-info/modal-inp
     MatStepperModule,
     routing,
     MatDialogModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule 
 
   ],
   exports: [

@@ -1,7 +1,12 @@
-export class AlternativeModel{
+export class ZupperWithAlternativeModel{
+    zupper: UserQuizModel
+    alternative: AlternativeModel
+}
+
+export class UserQuizModel{
     id: number
 }
 
-export interface AlternativeData {
+export class AlternativeModel{
     id: number
 }

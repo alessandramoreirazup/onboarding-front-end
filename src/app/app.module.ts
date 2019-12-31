@@ -13,6 +13,7 @@ import { ResultModule } from '../modules/result/result.module';
 import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
 import { DashboardModule } from '../modules/dashboard/dashboard.module';
 import { InputQuestionsModule } from '../modules/input-questions/input-questions.module';
+import { QuestionsListModule } from 'src/modules/questions-list/questions-list.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { InputQuestionsModule } from '../modules/input-questions/input-questions
     ResultModule,
     AdmPanelModule,
     InputQuestionsModule,
-    DashboardModule
+    DashboardModule,
+    QuestionsListModule
   ],
   exports:[
     QuizModule,
@@ -40,7 +42,8 @@ import { InputQuestionsModule } from '../modules/input-questions/input-questions
     ResultModule,
     AdmPanelModule,
     InputQuestionsModule,
-    DashboardModule
+    DashboardModule,
+    QuestionsListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
