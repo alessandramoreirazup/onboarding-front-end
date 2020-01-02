@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuizService } from '../service/quiz.service';

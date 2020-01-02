@@ -6,30 +6,30 @@
           <div class="big"></div>
         </div>
     </div>
-    <section class="center container"  *ngIf="user">
-        <p class="title white-text">Obrigada por responder, {{ user.firstName }}!******</p>
-        <p class="white-text subtitle"> Você marcou {{currentUser?.scoreBoard}} pontos!  </p>
+    <section class="center container" >
+        <p class="title white-text">Obrigada por responder, {{ googleUser?.firstName }}!******</p>
+        <p class="white-text subtitle"> Você marcou {{value}} pontos!  </p>
         
-        <div class="bad-score" *ngIf="60 >= currentUser.scoreBoard">
+        <div class="bad-score" *ngIf="60 >= value">
             <img src="https://media3.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif" alt="Yoda dizendo 'Much to Learn you still have'">
             <p class="white-text subtitle" >
                 Eu sei que nem sempre a gente consegue absorver tudo, né? 
                 <br>
-                Pra isso, te indico  <a href="{{currentUser.zupper.step.link}}" class="link">
+                Pra isso, te indico  <a href="{{currentUser?.step.link}}" class="link">
                 este conteúdo</a> que vai te ajudar muito.
             </p>
         </div>
 
-        <div class="medium-score" *ngIf="90 > currentUser.scoreBoard && currentUser.scoreBoard > 60">
+        <div class="medium-score" *ngIf="90 > value && value > 60">
             <img src="https://media1.tenor.com/images/c344e62a0c4bb41a3d4e25fba97abd04/tenor.gif?itemid=4944247" alt="Finn dando um joinha" width="450px">        
             <p class="white-text subtitle">
                 Você se saiu bem, mas eu tenho 
-            <a href="{{currentUser.zupper.step.link}}" class="link">
+            <a href="{{currentUser?.step.link}}" class="link">
                 conteúdos aqui</a> que vão te ajudar a conhecer a gente cada vez melhor. 
             </p>
         </div>
 
-        <div class="good-score" *ngIf="currentUser.scoreBoard >= 90">
+        <div class="good-score" *ngIf="value >= 90">
             <img src="https://media3.giphy.com/media/404ovuVEwF63S/source.gif" alt="Rey dançando e apontando para você">
             <p class="white-text subtitle">
                 Caraca, estamos felizes com seu desempenho! 

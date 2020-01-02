@@ -1,11 +1,10 @@
-<!-- LEFT SIDEBAR	 -->
-<div class="main-dashboard" *ngIf="user">
+<div class="main-dashboard">
     <ul id="sidenav-1" class="sidenav sidenav-fixed">
         <li>
             <div class="user-view center">
-                <p><img class="circle center" [src]="user.photoUrl"></p>
-                <p href="#name"><span class="name center">Oi, {{ user.firstName }}!</span></p>
-                <p href="#email"><span class="email center">{{ user.email }}</span></p>
+                <p><img class="circle center" [src]="user?.photoUrl"></p>
+                <p href="#name"><span class="name center">Oi, {{ user?.firstName }}!</span></p>
+                <p href="#email"><span class="email center">{{ user?.email }}</span></p>
             </div>
             <br>
             <div class="divider"></div>

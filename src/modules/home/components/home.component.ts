@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit {
     .subscribe((user: UserModel) => {
       this.currentUser = user
 
-      if(this.currentUser){
-        this.openDialog()
+      if(!this.currentUser){
+        this.openDialog();
       }
     })
   }
