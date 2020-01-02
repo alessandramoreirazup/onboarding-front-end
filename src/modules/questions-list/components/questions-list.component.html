@@ -1,28 +1,36 @@
-<section class="container">
-    <table class="responsive-table">
+<section class="questions-list">
+    <h1 class="title white-text">Filtrar por...</h1>
+    <div class="filters">
+        <button class="btn filter">Cultura</button>   
+        <button class="btn filter">Tecnologia</button>    
+        <button class="btn filter">Ética</button> 
+        <button class="btn add">Adicionar...</button>  
+    </div>
+        <table class="bg-white responsive-table bordered striped centered">
         <thead>
           <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
+              <th>Id</th>
+              <th>Descrição</th>
+              <th>Alternativas</th>
+              <th>Deletar</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>name</td>
-            <td>name</td>
-            <td>name</td>
-          </tr>
-          <tr>
-            <td>name</td>
-            <td>name</td>
-            <td>name</td>
-          </tr>
-          <tr>
-            <td>name</td>
-            <td>name</td>
-            <td>name</td>
+            <td>1</td>
+            <td>Qual desses é o CEO da Zup?</td>
+            <td class="col s3">
+                <select class="browser-default small-select text-black">
+                    <option value="">Bruno</option>
+                    <option value="">Diego</option>
+                    <option value="">Ricardo</option>
+                    <option value="">Robson</option>
+                </select> 
+            </td>
+            <td>
+                <button class="btn-floating red darken-4"><i class="material-icons">delete</i></button>
+            </td>
           </tr>
         </tbody>
       </table>
