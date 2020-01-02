@@ -2,30 +2,22 @@
 <mat-dialog-content class="center">
   <p>Oi {{googleUser?.firstName}}! Antes de começarmos, me conte um pouquinho mais sobre você? :)</p>
   <div class="row">
-      <div class="col s12">
-          <select class="browser-default text-black" [(ngModel)]="locationOptions">
-            <option *ngFor="let option of locationOptions; let i = index" [ngValue]="option.nameLocation">{{option.nameLocation}}</option>
-          </select>  
-      </div>
-    </div>
-
-
     <form [formGroup]="formUser">
-      <select class="browser-default text-black" formControlName="location">
-        <option [value]="userLocation" disabled selected>Onde você está?</option>
-        <option [value]="location.nameLocation" *ngFor="let location of locationOptions">{{ location.nameLocation }}</option>
-      </select> 
-    </form>
-
-
-
-
-      <div class="row">
-        <div class="col s12">
-        </div>
+      <div class="col s12">
+        <select class="browser-default text-black" formControlName="location">
+          <option value="Onde você está?" disabled selected>Onde você está?</option>
+          <option [value]="location.nameLocation" *ngFor="let location of locationOptions">{{ location.nameLocation }}</option>
+        </select> 
+        <br>
+        <select class="browser-default text-black" formControlName="pod">
+          <option value="Qual é a sua POD?" disabled selected>Qual é a sua POD?</option>
+          <option [value]="pod.namePod" *ngFor="let pod of podOptions">{{ pod.namePod }}</option>
+        </select> 
       </div>
-      <mat-dialog-actions class="center">
-        <button class="btn center btn-save" (click)="save()">Enviar</button>
-    </mat-dialog-actions>
+    </form>
     <br>
+  </div>  
+  <mat-dialog-actions class="center">
+    <button class="btn center btn-save" (click)="save()">Enviar</button>
+  </mat-dialog-actions>
 </mat-dialog-content>

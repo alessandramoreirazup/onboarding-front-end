@@ -30,11 +30,8 @@ export class HomeComponent implements OnInit {
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
-  
 
     this.modal.open(ModalInputInfoComponent, {
       width: '50%',
@@ -56,7 +53,7 @@ export class HomeComponent implements OnInit {
     .subscribe((user: UserModel) => {
       this.currentUser = user
 
-      if(!this.currentUser){
+      if(this.currentUser){
         this.openDialog()
       }
     })

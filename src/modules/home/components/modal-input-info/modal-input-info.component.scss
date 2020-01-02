@@ -2,5 +2,9 @@
     .cdk-overlay-backdrop{
         pointer-events: none;
     }
+    .mat-dialog-content {
+        padding: 3%;
+        overflow-y: hidden;
+    }
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialUser, AuthService } from 'angularx-social-login';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { UserModel, LocationObj, PodObj } from '../user.model';
@@ -23,8 +23,6 @@ export class ModalInputInfoComponent implements OnInit {
   public formUser: FormGroup
   private googleUser: SocialUser;
   private userData: UserModel;
-  private userLocation: String = 'Onde você está?';
-  private userPOD: String = 'Qual é a sua POD?';
   private locationObj: LocationObj;
   private podObj: PodObj;
   
@@ -36,69 +34,60 @@ export class ModalInputInfoComponent implements OnInit {
     { nameLocation: 'Campinas' }
   ]
 
-  private podOptions = {
-    NO_LIMITS: 'No Limits',
-    UAI_POD: 'UAI POD',
-    RED_ROCKET: 'Red Rocket',
-    META_POD: 'Meta POD',
-    EXTREME: 'Extreme',
-    NEXT: 'Next', 
-    ALPHA: 'Alpha',
-    ACELERA: 'Acelera',
-    MVPOD: 'MV POD',
-    MSI: 'MSI',
-    GOBIZ: 'GOBIZ',
-    INTEGRA: 'Integra',
-    SRE: 'SRE',
-    HIGH_POTENTIAL: 'High Potential',
-    SER_VENDEMOS: 'Ser o que vendemos'
-  }
+  private podOptions = [
+   { namePod: 'No Limits'} ,
+   { namePod: 'UAI POD' } ,
+   { namePod: 'Red Rocket'} ,
+   { namePod: 'Meta POD'},
+   { namePod: 'Extreme'},
+   { namePod: 'Next'}, 
+   { namePod: 'Alpha'},
+   { namePod: 'Acelera'},
+   { namePod: 'MV POD'},
+   { namePod: 'MSI'},
+   { namePod: 'GOBIZ'},
+   { namePod: 'Integra'},
+   { namePod: 'SRE'},
+   { namePod: 'High Potential'},
+   { namePod: 'Ser o que vendemos'}
+  ]
 
   ngOnInit() {
     this.authService.authState.subscribe((googleUser) => {
       this.googleUser = googleUser;
     });
+
+    this.createForm();
   }
 
-  verifyPodLocation(){
-    for (let property in this.locationOptions) {
-      
-      if(this.userLocation != property){
-        console.log('kkkkkk')
-      }
-    }
-
-  }
-
-  createForm(user: UserModel){
+  createForm(){
     this.formUser = this.formBuilder.group({
-      pod: [user.pod],
-      location: [user.location]
+      pod: ['Qual é a sua POD?'],
+      location: ['Onde você está?']
     })
   }
 
   save(){
-    this.verifyPodLocation()
 
     this.userData = new UserModel();
     this.locationObj = new LocationObj();
     this.podObj = new PodObj();
-    
-    this.locationObj.nameLocation = this.userLocation;
-    this.podObj.namePod = this.userPOD;
 
     this.userData.name =  this.googleUser.name
     this.userData.email = this.googleUser.email
     this.userData.location = this.locationObj;
     this.userData.pod = this.podObj;
 
+    this.userData.pod.namePod = this.formUser.value.pod
+    this.userData.location.nameLocation = this.formUser.value.location
 
-    console.log('como ficou montado o user', this.userData)
+
+    console.log('objeto do user completo', this.userData)
     this.homeService.postUser(this.userData).subscribe((response : UserModel) =>
       this.userData = response
     )
 
-    this.dialog.closeAll()
+    this.dialog.closeAll();
   }
 
 }
