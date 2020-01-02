@@ -33,6 +33,10 @@
         <ng-template matStepLabel>Ética</ng-template>
     </mat-step>
 </mat-horizontal-stepper>  
-  <p class="waves-effect waves-light btn" [routerLink]="['/quiz']">Iniciar Quiz!</p>
+
+<button *ngIf="3 >= currentUser?.step.id && currentUser?.step.completed != true" class="waves-effect waves-light btn" [routerLink]="['/quiz']">Iniciar Quiz!</button>
+    <div class="thanks-msg" *ngIf="currentUser?.step.id == 3 && currentUser?.step.completed == true">
+      <p class="white-text">Obrigado por completar o nosso onboarding! :) </p>
+    </div>
 </div>
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
-import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
-import { PageEvent } from '@angular/material/paginator';
 
 
 @Component({
@@ -17,9 +15,9 @@ export class DashboardComponent implements OnInit {
   myData: any = [];
   myOptions: any = [];
   myNewData: any = [];
-  pieWidth: number = 460;
-  barWidth: number = 700;
-  barHeight: number = 280;
+  pieWidth: number = 425;
+  barWidth: number = 630;
+  barHeight: number = 250;
   type = 'PieChart'
   typeBar = 'ColumnChart'
 
@@ -34,7 +32,7 @@ export class DashboardComponent implements OnInit {
     this.myOptions = {
       isStacked: true,
       colors: ['#7B9C00', '#273B7A', '#FE5050', '#7B9C00', '#D35933'],
-      bar: { groupWidth: '75%' },
+      bar: { groupWidth: '60%' },
       
     };
 

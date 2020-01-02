@@ -52,7 +52,6 @@ export class ResultComponent implements OnInit {
       this.userWithId.id = this.currentUser.id
 
       this.updateResult(this.userWithId)
-      console.log(this.userWithId)
     })
   }
 
@@ -60,8 +59,6 @@ export class ResultComponent implements OnInit {
     this.resultService.postResult(user)
     .subscribe((res) => {
       this.scoreResult = res
-
-      console.log(this.scoreResult.percentageScore)
     })
   }
   
