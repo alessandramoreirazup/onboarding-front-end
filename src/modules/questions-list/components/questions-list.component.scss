@@ -4,6 +4,19 @@
 
 .filter{
     margin: 1% 0.7% 1% 0%;
+
+}
+
+.cult{
+    background-color: #A5C138;
+}
+
+.tech{
+    background-color: #4C8EAC;
+}
+
+.etic{
+    background-color: #D35933;
 }
 
 .title{
@@ -18,3 +31,10 @@ td, th{
     margin: 2%; 
 }
 
+.head-table{
+    background-image: linear-gradient(to right, rgb(66, 173, 132) , #58A7DB);
+}
+
+select{
+    border: .5px solid #3d3d3d
+}

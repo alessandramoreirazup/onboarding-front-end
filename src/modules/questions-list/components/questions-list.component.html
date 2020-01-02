@@ -1,13 +1,13 @@
 <section class="questions-list">
     <h1 class="title white-text">Filtrar por...</h1>
     <div class="filters">
-        <button class="btn filter">Cultura</button>   
-        <button class="btn filter">Tecnologia</button>    
-        <button class="btn filter">Ética</button> 
-        <button class="btn add">Adicionar...</button>  
+        <button class="btn filter cult">Cultura</button>   
+        <button class="btn filter tech">Tecnologia</button>    
+        <button class="btn filter etic">Ética</button> 
+        <button class="btn add" [routerLink]="['/input-questions']">Adicionar...</button>  
     </div>
         <table class="bg-white responsive-table bordered striped centered">
-        <thead>
+        <thead class="head-table white-text">
           <tr>
               <th>Id</th>
               <th>Descrição</th>
