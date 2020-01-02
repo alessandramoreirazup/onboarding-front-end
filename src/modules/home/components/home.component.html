@@ -1,3 +1,7 @@
+<ngx-spinner bdOpacity = 0.2 bdColor = "#013750" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
 <nav class="transparent nav-border">
     <div class="nav-wrapper">       
       <img src="../../../assets/img/zup-logo.png" class="brand-logo">
@@ -9,18 +13,11 @@
         <img [src]="googleUser?.photoUrl" width="30px" height="30px" style="border-radius: 100%; margin-left: -50px; position: fixed; margin-top: 15px"> 
         {{ googleUser?.firstName }}<i class="material-icons right">arrow_drop_down</i></a></li> 
       </ul>
-      <!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">one</a></li>
-    <li><a href="#!">two</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">three</a></li>
-  </ul>
     </div>
   </nav>
 
 <br>
-
+ 
 <div class="container center-align stepper-section">
   <mat-horizontal-stepper labelPosition="bottom" #stepper >
     <mat-step>

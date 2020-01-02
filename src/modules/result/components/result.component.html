@@ -1,3 +1,6 @@
+<ngx-spinner bdOpacity = 0.2 bdColor = "#013750" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
 <div class="sky">
     <div class="diagonal-sky-bg">
        <div class="stars">
@@ -6,9 +9,9 @@
           <div class="big"></div>
         </div>
     </div>
-    <section class="center container" >
+    <section class="center container">
         <p class="title white-text">Obrigada por responder, {{ googleUser?.firstName }}!******</p>
-        <p class="white-text subtitle"> Você marcou {{ scoreResult?.percentageScore }} pontos!  </p>
+        <p class="white-text subtitle"> Você marcou {{ scoreResult?.percentageScore }} {{ value }} pontos!  </p>
         
         <div class="bad-score" *ngIf="60 >= scoreResult?.percentageScore">
             <img src="https://media3.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif" alt="Yoda dizendo 'Much to Learn you still have'">
@@ -34,7 +37,7 @@
             <p class="white-text subtitle">
                 Caraca, estamos felizes com seu desempenho! 
                 <br>  
-                E pra você se manter sempre por dentro do que rola na Zup, já favorita o <a href="" class="link"> My Space</a> no seu navegador.
+                E pra você se manter sempre por dentro do que rola na Zup, já favorita o <a href="https://sites.google.com/zup.com.br/zup/home" class="link"> My Space</a> no seu navegador.
             </p>    
         </div>
 

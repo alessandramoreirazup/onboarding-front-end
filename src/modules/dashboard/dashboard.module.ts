@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { DashboardComponent } from './components/dashboard.component';
 import { routing } from 'src/app/app-routing.module';
@@ -12,7 +13,8 @@ import { routing } from 'src/app/app-routing.module';
   imports: [
     CommonModule,
     routing,
-    GoogleChartsModule
+    GoogleChartsModule,
+    NgxSpinnerModule
   ]
 })
 export class DashboardModule { }

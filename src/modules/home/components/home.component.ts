@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 import { UserModel } from './user.model';
 import { HomeService } from '../service/home.service';
@@ -18,14 +20,24 @@ export class HomeComponent implements OnInit {
   constructor(
     private homeService: HomeService,
     private authService: AuthService,
-    private modal: MatDialog
+    private modal: MatDialog,
+    private spinner: NgxSpinnerService
     ) {   }
 
     private googleUser: SocialUser;
     private currentUser: UserModel;
   
   ngOnInit() {
-    this.getGoogleData();
+    this.loadSpinner();
+    this.getGoogleData();   
+  }
+
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1900);
   }
 
   openDialog() {

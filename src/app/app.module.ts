@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +34,8 @@ import { QuestionsListModule } from 'src/modules/questions-list/questions-list.m
     AdmPanelModule,
     InputQuestionsModule,
     DashboardModule,
-    QuestionsListModule
+    QuestionsListModule,
+    NgxSpinnerModule
   ],
   exports:[
     QuizModule,

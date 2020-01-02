@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -8,7 +9,10 @@ import { AuthService, SocialUser } from 'angularx-social-login';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor( private authService: AuthService) { }
+  constructor( 
+    private authService: AuthService,
+    private spinner: NgxSpinnerService
+    ) { }
   
   user: SocialUser;
   loggedIn: boolean;
@@ -22,6 +26,8 @@ export class DashboardComponent implements OnInit {
   typeBar = 'ColumnChart'
 
   ngOnInit() {
+    this.loadSpinner();
+
     this.myData = [
       ['São Paulo', 8136],
       ['Belo Horizonte', 8538],
@@ -51,4 +57,13 @@ export class DashboardComponent implements OnInit {
     });
   }  
 
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+  }
+
 }
+

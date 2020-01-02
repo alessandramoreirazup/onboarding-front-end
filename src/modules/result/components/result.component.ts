@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { ResultService } from '../service/result.service';
 import { HomeService } from 'src/modules/home/service/home.service';
@@ -18,7 +19,8 @@ export class ResultComponent implements OnInit {
   constructor(
     private resultService: ResultService,
     private authService: AuthService,
-    private homeService: HomeService
+    private homeService: HomeService,
+    private spinner: NgxSpinnerService
   ) { }
 
   public googleUser: SocialUser;
@@ -30,9 +32,17 @@ export class ResultComponent implements OnInit {
   value: number = 70; // valor de testes
 
   ngOnInit() {
+    this.loadSpinner();
     this.getGoogleData();
   }
 
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1500);
+  }
 
   getGoogleData(){
     this.authService.authState

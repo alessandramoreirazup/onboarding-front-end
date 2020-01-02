@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { QuizService } from '../service/quiz.service';
 import { AlternativeModel, UserQuizModel, ZupperWithAlternativeModel } from '../../quiz/components/alternative.model';
@@ -18,7 +19,7 @@ export class QuizComponent implements OnInit {
     private quizService : QuizService,
     private route: ActivatedRoute,
     private router: Router,
-
+    private spinner: NgxSpinnerService
   ) { } 
 
   userObj: any;
@@ -35,8 +36,17 @@ export class QuizComponent implements OnInit {
   progressValue: number = 0;
 
   ngOnInit() {
+    this.loadSpinner();
     this.getCurrentUser();
     this.getCurrentQuestion();
+  }
+
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1500);
   }
 
   getCurrentUser(){
