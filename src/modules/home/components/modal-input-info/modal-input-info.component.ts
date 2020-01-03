@@ -26,7 +26,7 @@ export class ModalInputInfoComponent implements OnInit {
   public locationObj: LocationObj;
   public podObj: PodObj;
   
-  private locationOptions = [
+  public locationOptions = [
     { nameLocation: 'São Paulo' },
     { nameLocation: 'Belo Horizonte' },
     { nameLocation: 'Uberlândia' },
@@ -34,7 +34,7 @@ export class ModalInputInfoComponent implements OnInit {
     { nameLocation: 'Campinas' }
   ]
 
-  private podOptions = [
+  public podOptions = [
    { namePod: 'No Limits'} ,
    { namePod: 'UAI POD' } ,
    { namePod: 'Red Rocket'} ,

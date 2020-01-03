@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     ) {   }
 
     public googleUser: SocialUser;
-    public currentUser: UserModel;
+    public currentUser: any;
   
   ngOnInit() {
     this.loadSpinner();
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   getCurrentUser(){
     return this.homeService.getUser(this.googleUser.email)
-    .subscribe((user: UserModel) => {
+    .subscribe((user: any) => {
       this.currentUser = user
 
       if(!this.currentUser){
