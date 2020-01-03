@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from 'src/modules/quiz/service/quiz.service';
-
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { NgxSpinnerService } from 'ngx-spinner';
+
+import { ResultService } from '../service/result.service';
+import { HomeService } from 'src/modules/home/service/home.service';
+import { UserModel } from 'src/modules/home/components/user.model';
+import { UserQuizModel } from 'src/modules/quiz/components/alternative.model';
 
 
 @Component({
@@ -12,20 +16,60 @@ import { SocialUser } from "angularx-social-login";
 })
 export class ResultComponent implements OnInit {
 
-  private user: SocialUser;
-  private loggedIn: boolean;
-
   constructor(
-    private quizService: QuizService,
-    private authService: AuthService) { }
+    private resultService: ResultService,
+    private authService: AuthService,
+    private homeService: HomeService,
+    private spinner: NgxSpinnerService
+  ) { }
+
+  public googleUser: SocialUser;
+  public loggedIn: boolean;
+  public currentUser: any;
+  public userWithId: UserQuizModel;
+  public scoreResult: any;
   
-  value: number = 30;
+  value: number = 70; // valor de testes
 
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
+    this.loadSpinner();
+    this.getGoogleData();
   }
 
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
+  }
+
+  getGoogleData(){
+    this.authService.authState
+    .subscribe((googleUser) => {
+          this.googleUser = googleUser
+          this.getCurrentUser()
+        }
+      )
+  }
+
+  getCurrentUser(){
+    return this.homeService.getUser(this.googleUser.email)
+    .subscribe((user: UserModel) => {
+      this.currentUser = user
+
+      this.userWithId = new UserQuizModel()
+      this.userWithId.id = this.currentUser.id
+
+      this.updateResult(this.userWithId)
+    })
+  }
+
+  updateResult(user: UserQuizModel){
+    this.resultService.postResult(user)
+    .subscribe((res) => {
+      this.scoreResult = res
+    })
+  }
+  
 }

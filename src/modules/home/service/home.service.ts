@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserModel } from '../components/user.model';
+import { SocialUser, AuthService } from 'angularx-social-login';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) { }
+
 
   private readonly urlPost = 'https://onboardingpgg.herokuapp.com/zupper';
 
@@ -17,6 +23,18 @@ export class HomeService {
       'Authorization': ''
     })
   };
+
+  getUser(email: String){
+    
+    return this.http.get(`https://onboardingpgg.herokuapp.com/zupper/${email}`)
+    .pipe(
+      map( response => {
+        console.log(response)
+        return response 
+      })
+    ) 
+  }
+
 
   postUser(user: UserModel){
     console.log(user)

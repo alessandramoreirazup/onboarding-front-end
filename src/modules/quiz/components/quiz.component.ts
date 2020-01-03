@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { QuizService } from '../service/quiz.service';
-import { AlternativeModel, AlternativeData } from '../../quiz/components/alternative.model';
+import { AlternativeModel, UserQuizModel, ZupperWithAlternativeModel } from '../../quiz/components/alternative.model';
 import { fadeAnimation } from 'src/app/animations';
 
 
@@ -18,50 +19,103 @@ export class QuizComponent implements OnInit {
     private quizService : QuizService,
     private route: ActivatedRoute,
     private router: Router,
+    private spinner: NgxSpinnerService
+  ) { } 
 
-    ) { } 
-
-  allSteps: any;
+  userObj: any;
   allQuestions: any;
   currentQuestion: any;
   filteredQuestions: any;
-
-  alternative: AlternativeData;
-  value: number = 0;
-  postData: AlternativeData;
-
-  data: String
+  userWithAlternative: ZupperWithAlternativeModel;
+  currentUser: UserQuizModel;
+  alternative: AlternativeModel;
+  postData: AlternativeModel;
+  index: number = 0;
+  userData: any;
+  
+  progressValue: number = 0;
 
   ngOnInit() {
+    this.loadSpinner();
+    this.getCurrentUser();
     this.getCurrentQuestion();
   }
 
-  next() {
-
-    this.value++
-
-    return this.currentQuestion = this.filteredQuestions[this.value];
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1500);
   }
 
-  // sendAlternative(){
-  
-  // }
+  getCurrentUser(){
+    this.quizService.getAll()
+    .subscribe(
+      (data) => {
+        this.userData = data
+        this.currentUser = new UserQuizModel();
+        this.currentUser.id = this.userData.id;
+      }
+    )
+  }
 
-  verifyAnswer(answer: AlternativeModel){
-    this.alternative = new AlternativeModel()
+  getCurrentQuestion(){
+    this.quizService.getAll()
+    .subscribe(
+      (data) =>{
  
-    this.alternative.id = answer.id
-    this.alternative.description = answer.description
+        this.userObj = data['step'];
+
+        this.allQuestions = this.userObj.question
+
+        console.log('todas as questões', this.allQuestions)
+
+        this.filteredQuestions = this.allQuestions.filter((question) => {
+          if(!question.answered){
+            return question;
+          }
+        })
+
+        this.reverseArray(this.filteredQuestions)
+
+        this.currentQuestion = this.filteredQuestions[this.index];
+
+        return this.currentQuestion;
+        
+      }
+
+    )
+  }
+
+  nextQuestion() {
+
+    this.index++
+
+    return this.currentQuestion = this.filteredQuestions[this.index];
+  }
+
+  sendAnswer(answer: AlternativeModel){
+    this.progressValue += 20;
+
+    this.alternative = new AlternativeModel(); // monta obj alternativa
+ 
+    this.alternative.id = answer.id;
     
-    this.quizService.postData(this.alternative).subscribe((res : AlternativeData)=> 
-      this.alternative = res
+    this.userWithAlternative = new ZupperWithAlternativeModel(); // monta um obj com user e alternative
+    this.userWithAlternative.alternative =  this.alternative; // atribui a alternativa montada p/ o user
+    this.userWithAlternative.zupper = this.currentUser 
+ 
+    this.quizService.postAlternative(this.userWithAlternative).subscribe((res : ZupperWithAlternativeModel)=> {
+      this.userWithAlternative = res
+    },err => {console.log(err)}
     )
 
-    if(this.value === this.filteredQuestions.length -1){
+    if(this.index === this.filteredQuestions.length -1){
       this.router.navigate(['/result']);
     }
 
-    this.next();
+    this.nextQuestion();
   }
 
   verifyQuestion(question: any){
@@ -79,32 +133,4 @@ export class QuizComponent implements OnInit {
   }
 
 
-  getCurrentQuestion(){
-    this.quizService.getAll()
-    .subscribe(
-      (data) =>{
- 
-        this.allSteps = data['step'];
-
-        this.allQuestions = this.allSteps.question
-
-        console.log(this.allQuestions)
-
-        this.filteredQuestions = this.allQuestions.filter((question) => {
-          if(!question.answered){
-            return question;
-          }
-        } 
-        )
-
-        this.reverseArray(this.filteredQuestions)
-
-        this.currentQuestion = this.filteredQuestions[this.value];
-
-        return this.currentQuestion;
-        
-      }
-
-    )
-  }
 }

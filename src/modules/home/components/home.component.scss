@@ -13,10 +13,6 @@ body{
     margin-top: 10%
 }
 
-#user-dropdown{
-    
-}
-
 
 @mixin styleStepLine($index) {
     .mat-horizontal-stepper-header {
@@ -60,5 +56,9 @@ body{
     .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
         background-color: #A5C138;
         color: #fff;
+    }
+    
+    .no-click-backdrop {
+        pointer-events: none;
     }
 }

@@ -33,3 +33,13 @@ table{
 .medium-bg{
     background-color: rgb(194, 143, 67);
 }
+
+.back{
+    float: left;
+    background: #01293b;
+    padding-right: .9%;
+
+    &:hover{
+        opacity: 0.5;
+    }
+}

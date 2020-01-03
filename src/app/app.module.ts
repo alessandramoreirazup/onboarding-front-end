@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuizModule } from '../modules/quiz/quiz.module';
 import { HomeModule } from '../modules/home/home.module';
-import { ThemeModule } from '../modules/theme/theme.module';
 import { LoginModule } from '../modules/login/login.module';
 import { ResultModule } from '../modules/result/result.module';
 import { AdmPanelModule } from '../modules/adm-panel/adm-panel.module';
 import { DashboardModule } from '../modules/dashboard/dashboard.module';
 import { InputQuestionsModule } from '../modules/input-questions/input-questions.module';
+import { QuestionsListModule } from 'src/modules/questions-list/questions-list.module';
 
 
 @NgModule({
@@ -26,24 +27,25 @@ import { InputQuestionsModule } from '../modules/input-questions/input-questions
     BrowserAnimationsModule,
     QuizModule,
     HomeModule,
-    ThemeModule,
     RouterModule,
     MaterializeModule,
     LoginModule,
     ResultModule,
     AdmPanelModule,
     InputQuestionsModule,
-    DashboardModule
+    DashboardModule,
+    QuestionsListModule,
+    NgxSpinnerModule
   ],
   exports:[
     QuizModule,
     HomeModule,
     LoginModule,
-    ThemeModule,
     ResultModule,
     AdmPanelModule,
     InputQuestionsModule,
-    DashboardModule
+    DashboardModule,
+    QuestionsListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

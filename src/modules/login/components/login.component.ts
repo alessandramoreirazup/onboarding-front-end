@@ -5,7 +5,6 @@ import { GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
 
 import { LoginService } from '../service/login.service';
-import { UserService } from '../service/user/user.service';
 import { UserModel, UserLogin } from 'src/modules/home/components/user.model';
 
 
@@ -21,8 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService, 
-    private loginService: LoginService, 
-    private userService: UserService, 
+    private loginService: LoginService,
     private router: Router) { }
 
   ngOnInit() {
@@ -35,23 +33,24 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login().then((googleResponse) => {
       
-      if (this.userService.getUser) {    
-        
-        this.userData = {
-          name: googleResponse.name,
-          email: googleResponse.email
-        }
-
-        this.loginService.sendUser(this.userData).subscribe((response: UserLogin) =>
-          this.userData = response
-        )
-
+      this.userData = {
+        name: googleResponse.name,
+        email: googleResponse.email
       }
-      
+
+      this.sendUserResponse();
+
       this.router.navigateByUrl("/home")
     });
   }
 
+  sendUserResponse(){
+    this.loginService.sendUser(this.userData).subscribe((response: UserLogin) => {
+      this.userData = response
+      console.log(this.userData)
+    }
+    )
+  }
 
   signOut() {
     this.authService.signOut();

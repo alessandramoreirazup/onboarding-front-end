@@ -1,0 +1,38 @@
+<section class="questions-list">
+  <button class="back" [routerLink]="['/dashboard']"><span class="material-icons left">keyboard_arrow_left</span> voltar</button>
+    <h1 class="title white-text">Filtrar por...</h1>
+    <div class="filters">
+        <button class="btn filter cult">Cultura</button>   
+        <button class="btn filter tech">Tecnologia</button>    
+        <button class="btn filter etic">Ética</button> 
+        <button class="btn add" [routerLink]="['/input-questions']">Adicionar...</button>  
+    </div>
+        <table class="bg-white responsive-table bordered striped centered">
+        <thead class="head-table white-text">
+          <tr>
+              <th>Id</th>
+              <th>Descrição</th>
+              <th>Alternativas</th>
+              <th>Deletar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Qual desses é o CEO da Zup?</td>
+            <td class="col s3">
+                <select class="browser-default small-select text-black">
+                    <option value="">Bruno</option>
+                    <option value="">Diego</option>
+                    <option value="">Ricardo</option>
+                    <option value="">Robson</option>
+                </select> 
+            </td>
+            <td>
+                <button class="btn-floating red darken-4"><i class="material-icons">delete</i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</section>
