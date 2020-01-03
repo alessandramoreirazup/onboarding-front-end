@@ -21,10 +21,10 @@ export class ModalInputInfoComponent implements OnInit {
   ) { }
 
   public formUser: FormGroup
-  private googleUser: SocialUser;
-  private userData: UserModel;
-  private locationObj: LocationObj;
-  private podObj: PodObj;
+  public googleUser: SocialUser;
+  public userData: UserModel;
+  public locationObj: LocationObj;
+  public podObj: PodObj;
   
   private locationOptions = [
     { nameLocation: 'São Paulo' },

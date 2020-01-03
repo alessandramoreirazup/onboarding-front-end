@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
     private spinner: NgxSpinnerService
     ) {   }
 
-    private googleUser: SocialUser;
-    private currentUser: UserModel;
+    public googleUser: SocialUser;
+    public currentUser: UserModel;
   
   ngOnInit() {
     this.loadSpinner();

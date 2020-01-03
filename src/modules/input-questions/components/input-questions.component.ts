@@ -15,17 +15,16 @@ export class InputQuestionsComponent implements OnInit {
     private inputQuestionService: InputQuestionsService
   ) { }
 
-    private newQuestion: QuestionModel;
-    private idStep: any = 'Selecione o tema';
-    private questionDescription: String;
-    private alternatives: Array<AlternativeQuestionModel>;
-    
-    private alternative1: AlternativeQuestionModel;
-    private alternative2: AlternativeQuestionModel;
-    private alternative3: AlternativeQuestionModel;
-    private alternative4: AlternativeQuestionModel;
+    public newQuestion: QuestionModel;
+    public idStep: any = 'Selecione o tema';
+    public questionDescription: String;
+    public alternatives: Array<AlternativeQuestionModel>;
+    public alternative1: AlternativeQuestionModel;
+    public alternative2: AlternativeQuestionModel;
+    public alternative3: AlternativeQuestionModel;
+    public alternative4: AlternativeQuestionModel;
 
-    private altCorrect: any = 'Selecione a alternativa correta';
+    public altCorrect: any = 'Selecione a alternativa correta';
 
     alternativeArr = [
       { label: 'Primeira', value: this.alternative1},
