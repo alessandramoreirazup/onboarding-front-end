@@ -1,0 +1,20 @@
+<div class="sky">
+    <div class="diagonal-sky-bg">
+       <div class="stars">
+          <div class="small"></div>
+          <div class="medium"></div>
+          <div class="big"></div>
+        </div>
+    </div>
+    <section class="center container">
+        <p class="title white-text">Obrigado por responder, {{ user.firstName }}!</p>
+        <img src="http://gif.co/SGvF.gif" width="180" height="180">        
+        <p class="white-text subtitle">
+            Você marcou {{value}} pontos!   
+            <br><a href="#" class="link">Veja mais conteúdos</a> pra ser mestre na nossa cultura Zup!</p>
+            <hr class="border-green">
+            <br>
+        <button class="btn" [routerLink]="['/home']">Terminar</button>
+    </section>
+    
+</div>

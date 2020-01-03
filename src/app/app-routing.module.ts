@@ -1,0 +1,27 @@
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
+
+import { QuizComponent } from 'src/modules/quiz/components/quiz.component';
+import { HomeComponent } from 'src/modules/home/components/home.component';
+import { ThemeComponent } from 'src/modules/theme/components/theme.component';
+import { LoginComponent } from 'src/modules/login/components/login.component';
+import { ResultComponent } from 'src/modules/result/components/result.component';
+import { AdmPanelComponent } from 'src/modules/adm-panel/components/adm-panel.component';
+import { DashboardComponent } from 'src/modules/dashboard/components/dashboard.component';
+import { InputQuestionsComponent } from 'src/modules/input-questions/components/input-questions.component';
+import { LoginGuard } from 'src/modules/login/guards/login.guard';
+import { GuardAdmGuard } from './../modules/adm-panel/guards/guardadm.guard'
+
+const routes: Routes = [
+  { path: '', component: LoginComponent}, 
+  { path: 'quiz', component: QuizComponent, canActivate: [LoginGuard] },
+  { path: 'theme', component: ThemeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [LoginGuard]},
+  { path: 'result', component: ResultComponent },
+  { path: 'admpanel', component: AdmPanelComponent, canActivate: [GuardAdmGuard]},
+  { path: 'input-questions', component: InputQuestionsComponent, canActivate: [LoginGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard] }
+];
+
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
