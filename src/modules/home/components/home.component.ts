@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
  
     setTimeout(() => {
       this.spinner.hide();
-    }, 1900);
+    }, 2500);
   }
 
   openDialog() {

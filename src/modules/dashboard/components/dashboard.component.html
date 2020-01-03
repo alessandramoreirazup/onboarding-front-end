@@ -13,9 +13,8 @@
             <div class="divider"></div>
             <br>
         </li>
-        <li><a href="#!" [routerLink]="['/questions-list']">Gerenciar perguntas</a></li>
-        <li><a href="#!" [routerLink]="['/admpanel']">Relatório detalhado</a></li>
-        <li><a class="subheader">...</a></li>
+        <li><button class="list-btn" [routerLink]="['/questions-list']"><i class="material-icons left">edit</i>Gerenciar perguntas</button></li>
+        <li><button class="list-btn" [routerLink]="['/admpanel']"> <i class="material-icons left">format_list_bulleted</i>Relatório detalhado</button></li>
         <div class="credits center">
             Feito com <span class="heart">❤</span> por PGG
         </div>
@@ -81,11 +80,11 @@
         </div>
         <div class="col s6">
             <div class="theme-filters">
-                <button class="bg-green btn theme-btn">Cultura</button>
+                <button class="btn theme-btn cult">Cultura</button>
                 <br>
-                <button class="btn theme-btn bg-lightblue">Tecnologia</button>
+                <button class="btn theme-btn tech">Tecnologia</button>
                 <br>
-                <button class="btn theme-btn bg-orange">Ética</button>
+                <button class="btn theme-btn etic">Ética</button>
             </div>
         </div>
 </section>

@@ -8,9 +8,9 @@ export class DashboardService {
 
   constructor(private http: HttpClient) { }
 
-  getUrl = '';
+  private generalUrl = 'http://www.mocky.io/v2/5e0f2f103400002d002d7f4e';
 
-  getAllData(){
-    return this.http.get(this.getUrl)
+  getGeneralData(){
+    return this.http.get(this.generalUrl)
   }
 }

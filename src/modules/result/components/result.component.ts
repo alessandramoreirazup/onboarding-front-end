@@ -41,7 +41,7 @@ export class ResultComponent implements OnInit {
  
     setTimeout(() => {
       this.spinner.hide();
-    }, 1500);
+    }, 3000);
   }
 
   getGoogleData(){
