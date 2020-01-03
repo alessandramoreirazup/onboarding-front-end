@@ -1,0 +1,92 @@
+<ngx-spinner bdOpacity = 0.2 bdColor = "#013750" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+</ngx-spinner>
+<div class="main-dashboard">
+    <ul id="sidenav-1" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view center">
+                <p><img class="circle center" [src]="user?.photoUrl"></p>
+                <p href="#name"><span class="name center">Oi, {{ user?.firstName }}!</span></p>
+                <p href="#email"><span class="email center">{{ user?.email }}</span></p>
+            </div>
+            <br>
+            <div class="divider"></div>
+            <br>
+        </li>
+        <li><button class="list-btn" [routerLink]="['/questions-list']"><i class="material-icons left">edit</i>Gerenciar perguntas</button></li>
+        <li><button class="list-btn" [routerLink]="['/admpanel']"> <i class="material-icons left">format_list_bulleted</i>Relatório detalhado</button></li>
+        <div class="credits center">
+            Feito com <span class="heart">❤</span> por PGG
+        </div>
+    </ul>
+    <section class="row container">
+
+        <div class="theme-data center">
+            <div class="col s12 theme-card">
+                <div class="card horizontal">
+                    <div class="card-stacked text-white bg-green">
+                        <h5>Cultura</h5>
+                        <hr class="divider">
+                        <span class="main-value">70%</span>
+                        <span>de acertos dos Zuppers</span>
+                        <br>
+                        <div class="total center">
+                            Total: 1243
+                        </div> 
+                    </div>
+                </div>
+            </div> 
+        <div class="col s12 theme-card">
+            <div class="card horizontal">
+                <div class="card-stacked text-white bg-lightblue">
+                    <h5>Tecnologia</h5>
+                    <hr class="divider">
+                    <span class="main-value">70%</span>
+                    <span>de acertos dos Zuppers</span>
+                    <br>
+                    <div class="total center">
+                        Total: 1243
+                    </div> 
+                </div>
+            </div>
+        </div> 
+        <div class="col s12 theme-card">
+            <div class="card horizontal">
+                <div class="card-stacked text-white bg-green bg-orange">
+                    <h5>Ética</h5>
+                    <hr class="divider">
+                    <span class="main-value">70%</span>
+                    <span>de acertos dos Zuppers</span>
+                    <br>
+                    <div class="total center">
+                        Total: 1243
+                    </div> 
+                </div>
+            </div>
+        </div>   
+    </div>
+        <div class="col s6">
+            <google-chart [type]="type" [data]="myData" [width]="pieWidth"></google-chart>
+        </div>
+        <div class="col s6">
+            <google-chart [type]="type" [data]="myNewData" [options]="myOptions" [width]="pieWidth"></google-chart>
+        </div>
+        <div class="col s6">
+            <div class="text-white chart-filters">Filtros: 
+                <button class="filter-btn">POD</button> 
+                <button class="filter-btn">Regional</button>
+            </div>
+            <google-chart [type]="typeBar" [data]="myData" [options]="myOptions" [width]="barWidth" [height]="barHeight"></google-chart>
+        </div>
+        <div class="col s6">
+            <div class="theme-filters">
+                <button class="btn theme-btn cult">Cultura</button>
+                <br>
+                <button class="btn theme-btn tech">Tecnologia</button>
+                <br>
+                <button class="btn theme-btn etic">Ética</button>
+            </div>
+        </div>
+</section>
+    
+</div>

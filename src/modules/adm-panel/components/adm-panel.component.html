@@ -1,0 +1,56 @@
+<section class="table-admin">
+  <div class="white-text">
+    <button class="back" [routerLink]="['/dashboard']"><span class="material-icons left">keyboard_arrow_left</span> voltar</button>
+    <h4 class="center">Zuppers ({{zuppers?.length}})</h4>
+  </div>
+
+    <br/><br/>
+    <div class="options">
+      <button class="btn question-page" (click)="export()">
+        <i class="material-icons left">cloud_download</i> Baixar em Excel</button>
+    </div>
+  <br>
+  <br>
+  <table class="bg-white responsive-table bordered striped centered">
+    <thead class="head-table text-white">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Localidade</th>
+      <th>POD</th>
+      <th>Data de Início</th>
+      <th>Fase atual</th>
+      <th>Nº Acertos da <br> fase atual</th>
+      <th>% Acertos<br> da fase atual</th>
+      <th>Nº Acertos <br> geral</th>
+      <th>% Acertos <br> geral</th>
+    </tr>
+  </thead>
+  
+  <tbody *ngFor="let zupper of zuppers">
+    <tr>
+      <td>{{zupper.name}}</td>
+      <td>{{zupper.email}}</td>
+      <td>{{zupper.location}}</td>
+      <td>{{zupper.pod}}</td>
+      <td>{{zupper.initDate}}</td>
+      <td>{{zupper.currentStep}}</td>
+      <td>{{zupper.currentStepPoints}}</td>
+      <td>
+        <a class="btn-floating" [ngClass]="
+        {
+          'alert-bg': 30 >= porcentagemAcertos,
+          'medium-bg': porcentagemAcertos > 30 && 60 > porcentagemAcertos 
+        }"  >{{ zupper.generalPoints }}</a>
+      </td>
+      <td><b>{{zupper.currentStepPercentage}}</b></td>
+      <td>
+        <a class="btn-floating">80</a>
+      </td>
+    </tr>
+    <tr>
+     
+    </tbody>
+  </table>
+
+  </section>

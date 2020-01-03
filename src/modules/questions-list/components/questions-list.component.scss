@@ -1,0 +1,52 @@
+.add{
+    float: right;
+}
+
+.filter{
+    margin: 1% 0.7% 1% 0%;
+    &:hover{
+        filter: brightness(1.2)
+    }
+}
+
+.cult{
+    background-color: #A5C138;
+}
+
+.tech{
+    background-color: #4C8EAC;
+}
+
+.etic{
+    background-color: #D35933;
+}
+
+.title{
+    font-size: xx-large;
+}
+
+td, th{
+    padding: 1%;
+}
+
+.questions-list{
+    margin: 2%; 
+}
+
+.head-table{
+    background-image: linear-gradient(to right, rgb(66, 173, 132) , #58A7DB);
+}
+
+select{
+    border: .5px solid #3d3d3d
+}
+
+.back{
+    color: #fff;
+    background: #01293b;
+    padding-right: .9%;
+
+    &:hover{
+        opacity: 0.5;
+    }
+}
