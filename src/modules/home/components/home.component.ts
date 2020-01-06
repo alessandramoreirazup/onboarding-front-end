@@ -8,6 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { UserModel } from './user.model';
 import { HomeService } from '../service/home.service';
 import { ModalInputInfoComponent } from './modal-input-info/modal-input-info.component';
+import { ModalWelcomeComponent } from './modal-welcome/modal-welcome.component';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private authService: AuthService,
     private modal: MatDialog,
+    private modalWelcome: MatDialog,
     private spinner: NgxSpinnerService
     ) {   }
 
@@ -30,6 +32,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadSpinner();
     this.getGoogleData();   
+
+  }
+
+  welcomeMsg(){
+    this.modalWelcome.open(ModalWelcomeComponent, {
+      width: '90%'
+    })
   }
 
   loadSpinner(){
@@ -40,22 +49,11 @@ export class HomeComponent implements OnInit {
     }, 2500);
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
-
-    this.modal.open(ModalInputInfoComponent, {
-      width: '50%',
-      panelClass: 'custom-modalbox'
-    });
-  }
-
   getGoogleData(){
     this.authService.authState
     .subscribe((googleUser) => {
           this.googleUser = googleUser
-          this.getCurrentUser()
+          this.getCurrentUser();
         }
       )
   }
@@ -66,7 +64,7 @@ export class HomeComponent implements OnInit {
       this.currentUser = user
 
       if(!this.currentUser){
-        this.openDialog();
+        this.welcomeMsg();
       }
     })
   }
