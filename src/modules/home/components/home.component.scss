@@ -13,6 +13,12 @@ body{
     margin-top: 10%
 }
 
+.help{
+    float: right;
+    margin-right: 3%;
+    margin-top: 6%
+}
+
 
 @mixin styleStepLine($index) {
     .mat-horizontal-stepper-header {
@@ -33,6 +39,7 @@ body{
         &[ng-reflect-active="true"]+.mat-stepper-horizontal-line {
             line-height: 10px;
         }
+        pointer-events: none;
     }
 
     .mat-step-icon{
@@ -52,7 +59,7 @@ body{
     .mat-horizontal-stepper-header::after, .mat-horizontal-stepper-header::before, .mat-stepper-horizontal-line {
         border-top-color: #A5C138;
     }
-
+    
     .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
         background-color: #A5C138;
         color: #fff;
@@ -62,3 +69,4 @@ body{
         pointer-events: none;
     }
 }
+

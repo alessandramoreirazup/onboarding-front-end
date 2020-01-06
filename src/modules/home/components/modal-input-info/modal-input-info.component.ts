@@ -20,13 +20,13 @@ export class ModalInputInfoComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  public formUser: FormGroup
-  private googleUser: SocialUser;
-  private userData: UserModel;
-  private locationObj: LocationObj;
-  private podObj: PodObj;
+  public formUser: FormGroup;
+  public googleUser: SocialUser;
+  public userData: UserModel;
+  public locationObj: LocationObj;
+  public podObj: PodObj;
   
-  private locationOptions = [
+  public locationOptions = [
     { nameLocation: 'São Paulo' },
     { nameLocation: 'Belo Horizonte' },
     { nameLocation: 'Uberlândia' },
@@ -34,7 +34,7 @@ export class ModalInputInfoComponent implements OnInit {
     { nameLocation: 'Campinas' }
   ]
 
-  private podOptions = [
+  public podOptions = [
    { namePod: 'No Limits'} ,
    { namePod: 'UAI POD' } ,
    { namePod: 'Red Rocket'} ,
@@ -65,6 +65,15 @@ export class ModalInputInfoComponent implements OnInit {
       pod: ['Qual é a sua POD?'],
       location: ['Onde você está?']
     })
+
+  }
+
+  verifyInfo(){
+    if(this.formUser.value.pod == 'Qual é a sua POD?' || this.formUser.value.location == 'Onde você está?'){
+      alert('Preencha os dados corretamente!')
+    }else{
+      this.save();
+    }
   }
 
   save(){
@@ -73,11 +82,13 @@ export class ModalInputInfoComponent implements OnInit {
     this.locationObj = new LocationObj();
     this.podObj = new PodObj();
 
+    // montando objeto de user
     this.userData.name =  this.googleUser.name
     this.userData.email = this.googleUser.email
     this.userData.location = this.locationObj;
     this.userData.pod = this.podObj;
 
+    //montando objeto de pod e location
     this.userData.pod.namePod = this.formUser.value.pod
     this.userData.location.nameLocation = this.formUser.value.location
 
@@ -87,7 +98,7 @@ export class ModalInputInfoComponent implements OnInit {
       this.userData = response
     )
 
-    this.dialog.closeAll();
+    this.dialog.ngOnDestroy();
   }
 
 }
