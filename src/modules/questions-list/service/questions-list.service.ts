@@ -18,7 +18,7 @@ export class QuestionsListService {
   }
 
   deleteQuestion(question: QuestionDeleteModel){
-    this.http.delete(`https://onboardingpgg.herokuapp.com/question${question.id}`)
+    return this.http.delete(`https://onboardingpgg.herokuapp.com/question/${question.id}`, { observe: 'response' })
   }
 
 }

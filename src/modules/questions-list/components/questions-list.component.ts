@@ -35,7 +35,18 @@ export class QuestionsListComponent implements OnInit {
   deleteQuestion(id: number){
     this.question = new QuestionDeleteModel();
     this.question.id = id;
-    return this.questionsListService.deleteQuestion(this.question)
+    console.log(this.question)
+    this.questionsListService.deleteQuestion(this.question)
+     .subscribe((res) =>{
+       console.log(res)
+       if (res.ok == true) {
+         alert('Pergunta deletada com sucesso!')      
+       }
+
+       this.getAllQuestions()
+     }, (err) => {
+         alert('Infelizmente não foi possível deletar a pergunta. Tente novamente')
+     })
   }
 
   getAllQuestions(){
