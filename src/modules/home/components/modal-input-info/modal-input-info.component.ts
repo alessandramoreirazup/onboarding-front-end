@@ -18,7 +18,7 @@ export class ModalInputInfoComponent implements OnInit {
     private authService: AuthService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder
-  ) { }
+  ) { } 
 
   public formUser: FormGroup;
   public googleUser: SocialUser;
@@ -27,32 +27,35 @@ export class ModalInputInfoComponent implements OnInit {
   public podObj: PodObj;
   
   public locationOptions = [
-    { nameLocation: 'São Paulo' },
     { nameLocation: 'Belo Horizonte' },
-    { nameLocation: 'Uberlândia' },
+    { nameLocation: 'Campinas' },
     { nameLocation: 'Joinville' },
-    { nameLocation: 'Campinas' }
+    { nameLocation: 'São Paulo' },
+    { nameLocation: 'Uberlândia' }
   ]
 
   public podOptions = [
-   { namePod: 'No Limits'} ,
-   { namePod: 'UAI POD' } ,
-   { namePod: 'Red Rocket'} ,
-   { namePod: 'Meta POD'},
-   { namePod: 'Extreme'},
-   { namePod: 'Next'}, 
-   { namePod: 'Alpha'},
-   { namePod: 'Acelera'},
-   { namePod: 'MV POD'},
-   { namePod: 'MSI'},
-   { namePod: 'GOBIZ'},
-   { namePod: 'Integra'},
-   { namePod: 'SRE'},
-   { namePod: 'High Potential'},
-   { namePod: 'Ser o que vendemos'}
+    { namePod: 'Acelera'},
+    { namePod: 'Alpha'},
+    { namePod: 'Extreme'},
+    { namePod: 'GOBIZ'},
+    { namePod: 'High Potential'},
+    { namePod: 'Integra'},
+    { namePod: 'Meta POD'},
+    { namePod: 'MSI'},
+    { namePod: 'MV POD'},
+    { namePod: 'Next'}, 
+    { namePod: 'No Limits'} ,
+    { namePod: 'Produto Zup'},
+    { namePod: 'Red Rocket'},
+    { namePod: 'Ser o que vendemos'},
+    { namePod: 'SRE'},
+    { namePod: 'UAI POD' } 
   ]
 
   ngOnInit() {
+
+    this.podOptions.sort();
     this.authService.authState.subscribe((googleUser) => {
       this.googleUser = googleUser;
     });
@@ -93,7 +96,6 @@ export class ModalInputInfoComponent implements OnInit {
     this.userData.location.nameLocation = this.formUser.value.location
 
 
-    console.log('objeto do user completo', this.userData)
     this.homeService.postUser(this.userData).subscribe((response : UserModel) =>
       this.userData = response
     )

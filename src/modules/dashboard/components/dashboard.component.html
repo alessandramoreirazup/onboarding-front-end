@@ -1,5 +1,5 @@
 <ngx-spinner bdOpacity = 0.2 bdColor = "#013750" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
-    <p style="color: white" > Loading... </p>
+    <p style="color: white" > Carregando... </p>
 </ngx-spinner>
 <div class="main-dashboard">
     <ul id="sidenav-1" class="sidenav sidenav-fixed">
@@ -13,6 +13,7 @@
             <div class="divider"></div>
             <br>
         </li>
+        <li><button class="list-btn" [routerLink]="['/home']"> <i class="material-icons left">home</i>Home</button></li>
         <li><button class="list-btn" [routerLink]="['/questions-list']"><i class="material-icons left">edit</i>Gerenciar perguntas</button></li>
         <li><button class="list-btn" [routerLink]="['/admpanel']"> <i class="material-icons left">format_list_bulleted</i>Relatório detalhado</button></li>
         <div class="credits center">
@@ -21,68 +22,43 @@
     </ul>
     <section class="row container">
 
-        <div class="theme-data center">
-            <div class="col s12 theme-card">
+        <div class="theme-data center" >
+            <div class="col s12 theme-card" *ngFor="let step of stepData">
                 <div class="card horizontal">
-                    <div class="card-stacked text-white bg-green">
-                        <h5>Cultura</h5>
+                    <div class="card-stacked text-white" [ngClass]=" {
+                        'bg-green': step.step == 1,
+                        'bg-lightblue': step.step == 2,
+                        'bg-orange': step.step == 3 }">
+                        <h5>{{ step.stepName }}</h5>
                         <hr class="divider">
-                        <span class="main-value">70%</span>
+                        <span class="main-value">{{ step.percentageScore }}%</span>
                         <span>de acertos dos Zuppers</span>
                         <br>
                         <div class="total center">
-                            Total: 1243
+                            Total: {{ step.scoreboard }}
                         </div> 
                     </div>
                 </div>
-            </div> 
-        <div class="col s12 theme-card">
-            <div class="card horizontal">
-                <div class="card-stacked text-white bg-lightblue">
-                    <h5>Tecnologia</h5>
-                    <hr class="divider">
-                    <span class="main-value">70%</span>
-                    <span>de acertos dos Zuppers</span>
-                    <br>
-                    <div class="total center">
-                        Total: 1243
-                    </div> 
-                </div>
-            </div>
-        </div> 
-        <div class="col s12 theme-card">
-            <div class="card horizontal">
-                <div class="card-stacked text-white bg-green bg-orange">
-                    <h5>Ética</h5>
-                    <hr class="divider">
-                    <span class="main-value">70%</span>
-                    <span>de acertos dos Zuppers</span>
-                    <br>
-                    <div class="total center">
-                        Total: 1243
-                    </div> 
-                </div>
-            </div>
-        </div>   
+            </div>   
     </div>
         <div class="col s6">
-            <google-chart [type]="type" [data]="myData" [width]="pieWidth"></google-chart>
+            <google-chart [title]="title1" [type]="type" [data]="locationGraph" [width]="pieWidth"></google-chart>
         </div>
         <div class="col s6">
-            <google-chart [type]="type" [data]="myNewData" [options]="myOptions" [width]="pieWidth"></google-chart>
+            <google-chart [title]="title2" [type]="type" [data]="podGraph" [options]="myOptions" [width]="pieWidth"></google-chart>
         </div>
         <div class="col s6">
             <div class="text-white chart-filters">Filtros: 
                 <button class="filter-btn">POD</button> 
                 <button class="filter-btn">Regional</button>
             </div>
-            <google-chart [type]="typeBar" [data]="myData" [options]="myOptions" [width]="barWidth" [height]="barHeight"></google-chart>
+            <google-chart [type]="typeBar" [title]="title3" [data]="locationGraph" [options]="myOptions" [width]="barWidth" [height]="barHeight"></google-chart>
         </div>
         <div class="col s6">
             <div class="theme-filters">
                 <button class="btn theme-btn cult">Cultura</button>
                 <br>
-                <button class="btn theme-btn tech">Tecnologia</button>
+                <button class="btn theme-btn tech">Jornada Zup</button>
                 <br>
                 <button class="btn theme-btn etic">Ética</button>
             </div>

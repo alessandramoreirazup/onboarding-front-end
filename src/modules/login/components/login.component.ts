@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
   sendUserResponse(){
     this.loginService.sendUser(this.userData).subscribe((response: UserLogin) => {
       this.userData = response
-      console.log(this.userData)
     }
     )
   }

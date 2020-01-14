@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputQuestionsService } from '../service/input-questions.service';
 import { QuestionModel, AlternativeQuestionModel } from './input-questions.model';
 import { HomeService } from 'src/modules/home/service/home.service';
+import { FormBuilder, FormGroup, Form, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-questions',
@@ -12,46 +13,71 @@ import { HomeService } from 'src/modules/home/service/home.service';
 export class InputQuestionsComponent implements OnInit {
 
   constructor(
-    private inputQuestionService: InputQuestionsService
+    private inputQuestionService: InputQuestionsService,
+    private formBuilder: FormBuilder
   ) { }
 
+    public formQuestion: FormGroup;
+    public formAlternative: FormGroup;
+    public formAltList: Array<FormGroup> = [];
     public newQuestion: QuestionModel;
-    public idStep: any = 'Selecione o tema';
     public questionDescription: String;
-    public alternatives: Array<AlternativeQuestionModel>;
-    public alternative1: AlternativeQuestionModel;
-    public alternative2: AlternativeQuestionModel;
-    public alternative3: AlternativeQuestionModel;
-    public alternative4: AlternativeQuestionModel;
-
-    public altCorrect: any = 'Selecione a alternativa correta';
+    public alternativeObj: any;
+    public alternatives: Array<AlternativeQuestionModel> =[];
+    public disableCheckBox: boolean;
 
     alternativeArr = [
-      { label: 'Primeira', value: this.alternative1},
-      { label: 'Segunda', value: this.alternative2},
-      { label: 'Terceira', value: this.alternative3},
-      { label: 'Quarta', value: this.alternative4},
+      { label: 'Primeira'},
+      { label: 'Segunda'},
+      { label: 'Terceira'},
+      { label: 'Quarta'},
     ]
 
   ngOnInit() {
+    this.createForm();
+  }
+  
+  createForm(){
+    this.formQuestion = this.formBuilder.group({
+      step: ['Selecione o tema'],
+      description: ['']
+    });
 
+    for (let i = 0; i < this.alternativeArr.length; i++) {
+      this.createAlternative();
+      this.formAltList.push(this.formAlternative)
+    }
   }
 
-  createQuestion(){
-    this.newQuestion = new QuestionModel();
-
-    this.newQuestion.idStep = this.idStep;
-    this.newQuestion.description = this.questionDescription;
-    this.newQuestion.alternatives = this.alternatives
-   
-    this.alternativeArr.forEach(object => {
-     console.log('cada objeto', object)
+  createAlternative(){
+    this.formAlternative = this.formBuilder.group({
+      description: [''],
+      correct: [false]
     });
- 
+  }
 
-    this.inputQuestionService.sendNewQuestion(this.newQuestion).subscribe((question: QuestionModel) =>
-      this.newQuestion = question
-    )
+  createFullQuestion(){
+    this.newQuestion = new QuestionModel();
+    
+    this.newQuestion.description = this.formQuestion.value.description;
+    this.newQuestion.idStep = this.formQuestion.value.step; 
+
+    this.formAltList.forEach((object, index) => {
+      this.alternativeObj = object.value
+      this.alternatives.push(this.alternativeObj)
+    }); 
+    
+    this.newQuestion.alternatives  = this.alternatives 
+    console.log(this.newQuestion)
+    this.inputQuestionService.sendNewQuestion(this.newQuestion)
+    .subscribe((res) =>{
+      if (res.ok == true) {
+        alert('Pergunta cadastrada com sucesso!')      
+      }
+    }, (err) => {
+        alert('Infelizmente não foi possível realizar o cadastro. Tente novamente')
+    })
+
   }
 
 }

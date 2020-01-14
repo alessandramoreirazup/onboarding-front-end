@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DashboardService } from '../service/dashboard.service';
 
 
 @Component({
@@ -11,14 +12,24 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DashboardComponent implements OnInit {
   constructor( 
     private authService: AuthService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private dashboardService: DashboardService
     ) { }
   
   user: SocialUser;
   loggedIn: boolean;
-  myData: any = [];
+  stepData: any;
+  locationData: any;
+  podData: any;
+  podGraph: any = [];
+
+
+  locationGraph: any = [];
+  generalData: any = []
   myOptions: any = [];
-  myNewData: any = [];
+  title1: any = 'Acertos totais por Regional'
+  title2: any = 'Acertos totais por POD';
+  title3: any = 'Acertos de cada tema por POD e regional';
   pieWidth: number = 425;
   barWidth: number = 630;
   barHeight: number = 250;
@@ -27,28 +38,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadSpinner();
+    this.getData();
 
-    this.myData = [
-      ['São Paulo', 8136],
-      ['Belo Horizonte', 8538],
-      ['Joinville', 2440],
-      ['Campinas', 3470],
-      ['Uberlândia', 1950]
-    ];
     this.myOptions = {
       isStacked: true,
       colors: ['#7B9C00', '#273B7A', '#FE5050', '#7B9C00', '#D35933'],
       bar: { groupWidth: '60%' },
       
     };
-
-    this.myNewData = [
-      ['No Limits', 8136],
-      ['Acelera', 8538],
-      ['Uai POD', 2244],
-      ['Meta POD', 3470],
-      ['Red Rocket', 2950]
-    ];
 
 
     this.authService.authState.subscribe((user) => {
@@ -57,12 +54,43 @@ export class DashboardComponent implements OnInit {
     });
   }  
 
+  fillLocationGraph(){
+      this.locationData.forEach((element, i) => {
+        this.locationGraph.push([element.location, element.scoreboard])
+      });
+  }
+
+  fillPodGraph(){
+    this.podData.forEach((element, i) => {
+      this.podGraph.push([element.pod, element.scoreboard])
+    });
+  }
+
+  fillGeneralData(){
+    this.stepData = this.generalData.stepDashboards;
+    this.podData = this.generalData.podDashboard;
+    this.locationData = this.generalData.locationDashboard;
+    
+    this.fillLocationGraph();
+    this.fillPodGraph();
+  }
+
   loadSpinner(){
     this.spinner.show();
  
     setTimeout(() => {
       this.spinner.hide();
     }, 3000);
+  }
+
+  getData(){
+    return this.dashboardService.getGeneralData()
+    .subscribe((data) => {
+      this.generalData = data
+      console.log(this.generalData)
+
+      this.fillGeneralData();
+    })
   }
 
 }
