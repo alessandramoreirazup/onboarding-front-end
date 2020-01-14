@@ -22,14 +22,13 @@ export class HomeService {
       'Content-Type':  'application/json; charset=UTF-8',
       'Authorization': ''
     })
-  };
-
+  }; 
+ 
   getUser(email: String){
     
     return this.http.get(`https://onboardingpgg.herokuapp.com/zupper/${email}`)
     .pipe(
       map( response => {
-        console.log(response)
         return response 
       })
     ) 
@@ -37,7 +36,6 @@ export class HomeService {
 
 
   postUser(user: UserModel){
-    console.log(user)
     return this.http.post(this.urlPost, user, this.httpOptions)
   }
 }

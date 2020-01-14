@@ -6,5 +6,5 @@ export class QuestionModel{
 
 export class AlternativeQuestionModel{
     description: String
-    correct: boolean
+    correct: any
 }

@@ -29,7 +29,7 @@ export class ResultComponent implements OnInit {
   public userWithId: UserQuizModel;
   public scoreResult: any;
   
-  value: number = 70; // valor de testes
+  value: number = 40; // valor de testes
 
   ngOnInit() {
     this.loadSpinner();
@@ -57,7 +57,7 @@ export class ResultComponent implements OnInit {
     return this.homeService.getUser(this.googleUser.email)
     .subscribe((user: UserModel) => {
       this.currentUser = user
-
+      
       this.userWithId = new UserQuizModel()
       this.userWithId.id = this.currentUser.id
 

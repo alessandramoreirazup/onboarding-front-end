@@ -9,6 +9,7 @@ import { FormsModule }  from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 
+
 import { routing } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home.component';
 import { ModalInputInfoComponent } from './components/modal-input-info/modal-input-info.component';

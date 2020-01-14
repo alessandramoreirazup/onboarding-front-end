@@ -14,8 +14,8 @@
 }
 
 .login p {
-    font-size: 25px;
-    color: white;
+  font-size: 25px;
+  color: white;
 }
 
 .g-img {
@@ -31,25 +31,27 @@
   align-items: center;
 }
 
-.stars {
+.animations {
+  display: flex;
+  position: relative;
+}
+
+.stars1{
   position: absolute;
+
 }
 
-.stars1 {
-  position: relative;
-  bottom: 85px;
-  left: 178px;
+.stars2{
+  position: absolute;
+  top: 20vh;
+  left: 40vh;
 }
 
-.stars2 {
-  position: relative;
-  top: 145px;
-  left: 270px;
-}
 
-.zup-foguete{
-    width: 330px;  
-    animation: float 2s infinite ease;
+.zup-foguete {
+  width: 330px;
+  animation: float 2s infinite ease;
+  justify-content: center;
 }
 
 .floating {
@@ -72,5 +74,88 @@
 
   to {
     transform: translate(0, -0px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .onboarding{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .g-button {
+    width: 20vw;
+  }
+
+  .zup-foguete{
+    width: 300px;
+  }
+  
+  .stars1{
+    width: 14vw;
+    bottom: 23vh;
+    left: 5vh;
+  }
+
+  .stars2{
+    width: 18vw;
+    left: 32vh;
+    top: 15vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .onboarding{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .g-button {
+    width: 35vw;
+  }
+
+  .zup-foguete{
+    width: 250px;
+  }
+  
+  .stars1{
+    width: 14vw;
+    bottom: 23vh;
+    left: 5vh;
+  }
+
+  .stars2{
+    width: 18vw;
+    left: 32vh;
+    top: 15vw;
+  }
+}
+
+@media (max-width: 420px) {
+  .onboarding{
+    flex-direction: column-reverse;
+    margin: 30vh 15vw;
+  }
+
+  .g-button {
+    width: 50vw;
+  }
+
+  .zup-logo{
+    width: 200px;
+  }
+
+  .zup-foguete{
+    display: none;
+  }
+
+  .stars1{
+    display: none;
+  }
+
+  .stars2{
+    display: none;
   }
 }
