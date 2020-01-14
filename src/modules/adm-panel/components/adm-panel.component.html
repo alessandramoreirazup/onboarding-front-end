@@ -31,21 +31,25 @@
     <tr>
       <td>{{zupper.name}}</td>
       <td>{{zupper.email}}</td>
-      <td>{{zupper.location}}</td>
-      <td>{{zupper.pod}}</td>
-      <td>{{zupper.initDate}}</td>
-      <td>{{zupper.currentStep}}</td>
-      <td>{{zupper.currentStepPoints}}</td>
+      <td>{{zupper.nameLocation}}</td>
+      <td>{{zupper.namePod}}</td>
+      <td>{{zupper.registrationDate}}</td>
+      <td>{{zupper.stepName}}</td>
+      <td>{{zupper.scoreBoard}}</td>
       <td>
         <a class="btn-floating" [ngClass]="
         {
-          'alert-bg': 30 >= porcentagemAcertos,
-          'medium-bg': porcentagemAcertos > 30 && 60 > porcentagemAcertos 
-        }"  >{{ zupper.generalPoints }}</a>
+          'alert-bg': 30 >= zupper.percentageScore,
+          'medium-bg': zupper.percentageScore > 30 && 60 > zupper.percentageScore 
+        }"  >{{ zupper.percentageScore }}</a>
       </td>
-      <td><b>{{zupper.currentStepPercentage}}</b></td>
+      <td><b>{{ zupper.fullScore }}</b></td>
       <td>
-        <a class="btn-floating">80</a>
+        <a class="btn-floating"  [ngClass]="
+        {
+          'alert-bg': 30 >= zupper.fullPercentage,
+          'medium-bg': zupper.fullPercentage > 30 && 60 > zupper.fullPercentage 
+        }" >{{ zupper.fullPercentage }}</a>
       </td>
     </tr>
     <tr>

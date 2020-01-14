@@ -11,7 +11,7 @@ import { InputQuestionsComponent } from 'src/modules/input-questions/components/
 import { QuestionsListComponent } from 'src/modules/questions-list/components/questions-list.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent }, 
+  { path: '', component: LoginComponent}, 
   { path: 'quiz', component: QuizComponent},
   { path: 'home', component: HomeComponent},
   { path: 'result', component: ResultComponent },

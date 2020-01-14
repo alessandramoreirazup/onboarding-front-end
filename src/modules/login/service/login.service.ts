@@ -13,7 +13,7 @@ import { UserModel, UserLogin } from 'src/modules/home/components/user.model';
 export class LoginService {
 
   public user: SocialUser;
-  private loggedIn: boolean;
+  private loggedIn: boolean = false;
   private readonly urlPost = 'https://onboardingpgg.herokuapp.com/zupper/exists';
   private response;
 
@@ -34,8 +34,16 @@ export class LoginService {
     this.authService.signOut();
   }
 
+  signIn() {
+    this.loggedIn = true;
+  }
+
   login() {
     return this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  isLoggedIn(): Boolean {
+    return this.loggedIn;
   }
 
   authUser(){
@@ -43,7 +51,6 @@ export class LoginService {
   }
 
   sendUser(user: UserLogin){
-    console.log('user q eu mando', user)
     return this.http.post(this.urlPost, user)
     .pipe(
       map( response => {

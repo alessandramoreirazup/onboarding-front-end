@@ -10,23 +10,23 @@ import { SocialLoginModule, AuthServiceConfig, SocialUser } from "angularx-socia
 import { GoogleLoginProvider, LoginOpt } from "angularx-social-login";
 import { LoginGuard } from './guards/login.guard';
 
-function getAuthServiceConfigs(): AuthServiceConfig{
+export function getAuthServiceConfigs(): AuthServiceConfig{
 
-const opt: LoginOpt = {
-  hosted_domain: 'zup.com.br',
-  scope: 'profile email'
-}
-
-
-let config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("592209104753-2chr06bh7ls6h8tvev6r35setg36oe3i.apps.googleusercontent.com", opt),
+  const opt: LoginOpt = {
+    hosted_domain: 'zup.com.br',
+    scope: 'profile email'
   }
-]);
-
-  return config;
-}
+  
+  
+  let config = new AuthServiceConfig([
+    {
+      id: GoogleLoginProvider.PROVIDER_ID,
+      provider: new GoogleLoginProvider("592209104753-2chr06bh7ls6h8tvev6r35setg36oe3i.apps.googleusercontent.com", opt),
+    }
+  ]);
+  
+    return config;
+  }
 
 @NgModule({
   declarations: [LoginComponent],

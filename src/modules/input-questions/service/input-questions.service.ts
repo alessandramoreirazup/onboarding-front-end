@@ -11,17 +11,10 @@ export class InputQuestionsService {
     private http: HttpClient
   ) { }
 
-  private postUrl = '';
-  
-  httpOptions = {
-    headers: new HttpHeaders ({
-      'Content-Type':  'application/json; charset=UTF-8',
-      'Authorization': ''
-    })
-  }
+  private postUrl = 'https://onboardingpgg.herokuapp.com/question';
+
 
   sendNewQuestion(question: QuestionModel){
-    console.log(question)
-    return this.http.post(this.postUrl, question, this.httpOptions);
+      return this.http.post(this.postUrl, question, {observe: 'response'});
   }
 }

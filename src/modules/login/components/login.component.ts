@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, SocialUser } from "angularx-social-login";
+
 import { GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
 
@@ -46,7 +47,6 @@ export class LoginComponent implements OnInit {
   sendUserResponse(){
     this.loginService.sendUser(this.userData).subscribe((response: UserLogin) => {
       this.userData = response
-      console.log(this.userData)
     }
     )
   }

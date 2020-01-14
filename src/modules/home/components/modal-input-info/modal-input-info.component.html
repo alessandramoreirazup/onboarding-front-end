@@ -1,6 +1,6 @@
 
 <mat-dialog-content class="center">
-  <p>Oi {{googleUser?.firstName}}! Antes de começarmos, me conte um pouquinho mais sobre você? :)</p>
+  <p>{{googleUser?.firstName}}, antes de começarmos, me conte um pouquinho mais sobre você? 😉</p>
   <div class="row">
     <form [formGroup]="formUser">
       <div class="col s12">
@@ -18,6 +18,6 @@
     <br>
   </div>  
   <mat-dialog-actions class="center">
-    <button class="btn center btn-save" (click)="save()">Enviar</button>
+    <button class="btn center btn-save" (click)="verifyInfo()">Enviar</button>
   </mat-dialog-actions>
 </mat-dialog-content>

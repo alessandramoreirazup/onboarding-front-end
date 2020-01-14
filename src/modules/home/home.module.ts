@@ -9,16 +9,19 @@ import { FormsModule }  from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 
+
 import { routing } from 'src/app/app-routing.module';
 import { HomeComponent } from './components/home.component';
 import { ModalInputInfoComponent } from './components/modal-input-info/modal-input-info.component';
+import { ModalWelcomeComponent } from './components/modal-welcome/modal-welcome.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ModalInputInfoComponent
+    ModalInputInfoComponent,
+    ModalWelcomeComponent
   ],
   imports: [
     CommonModule,
@@ -34,9 +37,10 @@ import { ModalInputInfoComponent } from './components/modal-input-info/modal-inp
   ],
   exports: [
     HomeComponent,
-    ModalInputInfoComponent
+    ModalInputInfoComponent,
+    ModalWelcomeComponent
   ],
   
-  entryComponents: [ModalInputInfoComponent]
+  entryComponents: [ModalInputInfoComponent, ModalWelcomeComponent]
 })
 export class HomeModule {}

@@ -18,41 +18,44 @@ export class ModalInputInfoComponent implements OnInit {
     private authService: AuthService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder
-  ) { }
+  ) { } 
 
-  public formUser: FormGroup
-  private googleUser: SocialUser;
-  private userData: UserModel;
-  private locationObj: LocationObj;
-  private podObj: PodObj;
+  public formUser: FormGroup;
+  public googleUser: SocialUser;
+  public userData: UserModel;
+  public locationObj: LocationObj;
+  public podObj: PodObj;
   
-  private locationOptions = [
-    { nameLocation: 'São Paulo' },
+  public locationOptions = [
     { nameLocation: 'Belo Horizonte' },
-    { nameLocation: 'Uberlândia' },
+    { nameLocation: 'Campinas' },
     { nameLocation: 'Joinville' },
-    { nameLocation: 'Campinas' }
+    { nameLocation: 'São Paulo' },
+    { nameLocation: 'Uberlândia' }
   ]
 
-  private podOptions = [
-   { namePod: 'No Limits'} ,
-   { namePod: 'UAI POD' } ,
-   { namePod: 'Red Rocket'} ,
-   { namePod: 'Meta POD'},
-   { namePod: 'Extreme'},
-   { namePod: 'Next'}, 
-   { namePod: 'Alpha'},
-   { namePod: 'Acelera'},
-   { namePod: 'MV POD'},
-   { namePod: 'MSI'},
-   { namePod: 'GOBIZ'},
-   { namePod: 'Integra'},
-   { namePod: 'SRE'},
-   { namePod: 'High Potential'},
-   { namePod: 'Ser o que vendemos'}
+  public podOptions = [
+    { namePod: 'Acelera'},
+    { namePod: 'Alpha'},
+    { namePod: 'Extreme'},
+    { namePod: 'GOBIZ'},
+    { namePod: 'High Potential'},
+    { namePod: 'Integra'},
+    { namePod: 'Meta POD'},
+    { namePod: 'MSI'},
+    { namePod: 'MV POD'},
+    { namePod: 'Next'}, 
+    { namePod: 'No Limits'} ,
+    { namePod: 'Produto Zup'},
+    { namePod: 'Red Rocket'},
+    { namePod: 'Ser o que vendemos'},
+    { namePod: 'SRE'},
+    { namePod: 'UAI POD' } 
   ]
 
   ngOnInit() {
+
+    this.podOptions.sort();
     this.authService.authState.subscribe((googleUser) => {
       this.googleUser = googleUser;
     });
@@ -65,6 +68,15 @@ export class ModalInputInfoComponent implements OnInit {
       pod: ['Qual é a sua POD?'],
       location: ['Onde você está?']
     })
+
+  }
+
+  verifyInfo(){
+    if(this.formUser.value.pod == 'Qual é a sua POD?' || this.formUser.value.location == 'Onde você está?'){
+      alert('Preencha os dados corretamente!')
+    }else{
+      this.save();
+    }
   }
 
   save(){
@@ -73,21 +85,22 @@ export class ModalInputInfoComponent implements OnInit {
     this.locationObj = new LocationObj();
     this.podObj = new PodObj();
 
+    // montando objeto de user
     this.userData.name =  this.googleUser.name
     this.userData.email = this.googleUser.email
     this.userData.location = this.locationObj;
     this.userData.pod = this.podObj;
 
+    //montando objeto de pod e location
     this.userData.pod.namePod = this.formUser.value.pod
     this.userData.location.nameLocation = this.formUser.value.location
 
 
-    console.log('objeto do user completo', this.userData)
     this.homeService.postUser(this.userData).subscribe((response : UserModel) =>
       this.userData = response
     )
 
-    this.dialog.closeAll();
+    this.dialog.ngOnDestroy();
   }
 
 }

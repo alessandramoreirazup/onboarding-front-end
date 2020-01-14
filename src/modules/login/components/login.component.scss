@@ -1,68 +1,161 @@
-.onboarding{
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-    width: 70%;
-    margin-top: 65px;
+.onboarding {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+  width: 70%;
+  margin-top: 65px;
 }
 
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .login p {
-    font-size: 25px;
-    color: white;
+  font-size: 25px;
+  color: white;
 }
 
-.g-img{
-    width: 30px;
+.g-img {
+  width: 30px;
 }
 
-.g-button{
-    background-color: white;
-    width: 20vw;
-    height: 7vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.g-button {
+  background-color: white;
+  width: 20vw;
+  height: 7vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.stars{
-    position: absolute;
+.animations {
+  display: flex;
+  position: relative;
 }
 
 .stars1{
-    position: relative;
-    bottom: 85px;
-    left: 178px;
+  position: absolute;
+
 }
 
 .stars2{
-    position: relative;
-    top: 145px;
-    left: 270px;
+  position: absolute;
+  top: 20vh;
+  left: 40vh;
 }
 
-.zup-foguete{
-    width: 330px;  
-    animation: float 2s infinite ease;
+
+.zup-foguete {
+  width: 330px;
+  animation: float 2s infinite ease;
+  justify-content: center;
 }
 
-.floating {  
-    animation-name: floating;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    margin-left: 30px;
-    margin-top: 5px;
+.floating {
+  animation-name: floating;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
 }
 
 @keyframes floating {
-    from { transform: translate(0,  0px); }
-    65%  { transform: translate(0, 15px); }
-    to   { transform: translate(0, -0px); }    
+  from {
+    transform: translate(0, 0px);
+  }
+
+  65% {
+    transform: translate(0, 15px);
+  }
+
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .onboarding{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .g-button {
+    width: 20vw;
+  }
+
+  .zup-foguete{
+    width: 300px;
+  }
+  
+  .stars1{
+    width: 14vw;
+    bottom: 23vh;
+    left: 5vh;
+  }
+
+  .stars2{
+    width: 18vw;
+    left: 32vh;
+    top: 15vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .onboarding{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .g-button {
+    width: 35vw;
+  }
+
+  .zup-foguete{
+    width: 250px;
+  }
+  
+  .stars1{
+    width: 14vw;
+    bottom: 23vh;
+    left: 5vh;
+  }
+
+  .stars2{
+    width: 18vw;
+    left: 32vh;
+    top: 15vw;
+  }
+}
+
+@media (max-width: 420px) {
+  .onboarding{
+    flex-direction: column-reverse;
+    margin: 30vh 15vw;
+  }
+
+  .g-button {
+    width: 50vw;
+  }
+
+  .zup-logo{
+    width: 200px;
+  }
+
+  .zup-foguete{
+    display: none;
+  }
+
+  .stars1{
+    display: none;
+  }
+
+  .stars2{
+    display: none;
+  }
 }

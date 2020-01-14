@@ -6,8 +6,22 @@
 .bg-form{
     background-color: #02283b;
     padding: 1%;
+    border-radius: 3px;
 }
 
 .border-title{
     border-color: #4db6ac 
+}
+
+
+.back{
+    color: #fff;
+    background: #01293b;
+    padding-right: .9%;
+    float: left;
+    margin-left: 2%;
+    margin-right: -5%;
+    &:hover{
+        opacity: 0.5;
+    }
 }

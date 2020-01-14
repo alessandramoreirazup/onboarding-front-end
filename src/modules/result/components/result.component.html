@@ -10,40 +10,40 @@
         </div>
     </div>
     <section class="center container">
-        <p class="title white-text">Obrigada por responder, {{ googleUser?.firstName }}!******</p>
-        <p class="white-text subtitle"> Você marcou {{ scoreResult?.percentageScore }} {{ value }} pontos!  </p>
+        <p class="title white-text">Valeu por responder, {{ googleUser?.firstName }}!</p>
+        <p class="white-text subtitle"> Você marcou {{ scoreResult?.percentageScore }} pontos!  </p>
         
         <div class="bad-score" *ngIf="60 >= scoreResult?.percentageScore">
             <img src="https://media3.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif" alt="Yoda dizendo 'Much to Learn you still have'">
             <p class="white-text subtitle" >
-                Eu sei que nem sempre a gente consegue absorver tudo, né? 
+               A gente entende que tem muita informação pra absorver. 
                 <br>
-                Pra isso, te indico  <a href="{{currentUser?.step.link}}" class="link">
-                este conteúdo</a> que vai te ajudar muito.
+                Por isso, selecionamos  <a href="{{currentUser?.step.link}}" class="link">
+                alguns conteúdos</a> que podem te ajudar muito nesse início de jornada.
             </p>
         </div>
 
         <div class="medium-score" *ngIf="90 > scoreResult?.percentageScore && scoreResult?.percentageScore > 60">
             <img src="https://media1.tenor.com/images/c344e62a0c4bb41a3d4e25fba97abd04/tenor.gif?itemid=4944247" alt="Finn dando um joinha" width="450px">        
             <p class="white-text subtitle">
-                Você se saiu bem, mas eu tenho 
+                Você se saiu bem, mas 
             <a href="{{currentUser?.step.link}}" class="link">
-                conteúdos aqui</a> que vão te ajudar a conhecer a gente cada vez melhor. 
+                aqui</a> tem alguns conteúdos que vão te ajudar a conhecer a Zup ainda mais. 
             </p>
         </div>
 
         <div class="good-score" *ngIf="scoreResult?.percentageScore >= 90">
             <img src="https://media3.giphy.com/media/404ovuVEwF63S/source.gif" alt="Rey dançando e apontando para você">
             <p class="white-text subtitle">
-                Caraca, estamos felizes com seu desempenho! 
+                Estamos felizes com seu desempenho! 
                 <br>  
-                E pra você se manter sempre por dentro do que rola na Zup, já favorita o <a href="https://sites.google.com/zup.com.br/zup/home" class="link"> My Space</a> no seu navegador.
+                E pra você se manter sempre por dentro do que acontece na Zup, já favorita o <a href="https://sites.google.com/zup.com.br/zup/home" class="link"> My Space</a> no seu navegador.
             </p>    
         </div>
 
         <hr class="border-green">
         <br>
-        <button class="btn" [routerLink]="['/home']">Terminar******</button>
+        <button class="btn" [routerLink]="['/home']">Finalizar ({{ currentUser?.step.id }}/3) </button>
     </section>
     <br>
     

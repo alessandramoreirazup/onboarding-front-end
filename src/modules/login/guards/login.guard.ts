@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
 import { LoginService } from '../service/login.service';
 
 @Injectable({
@@ -16,14 +15,14 @@ export class LoginGuard implements CanActivate {
   // }
 
   constructor(
-    private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ){ }
   
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.loginService.login){
+    if(this.loginService.isLoggedIn()) {
       return true;
     } 
 

@@ -1,39 +1,46 @@
 <ngx-spinner bdOpacity = 0.2 bdColor = "#013750" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
-  <p style="color: white" > Loading... </p>
+  <p style="color: white" > Carregando... </p>
 </ngx-spinner>
 
 <nav class="transparent nav-border">
     <div class="nav-wrapper">       
       <img src="../../../assets/img/zup-logo.png" class="brand-logo">
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-         <!-- Dropdown Trigger -->
-     
+      <ul class="drop-content">
         <li>
-        <a class="dropdown-trigger" id="user-dropdown" data-target="dropdown1">  
-        <img [src]="googleUser?.photoUrl" width="30px" height="30px" style="border-radius: 100%; margin-left: -50px; position: fixed; margin-top: 15px"> 
-        {{ googleUser?.firstName }}<i class="material-icons right">arrow_drop_down</i></a></li> 
+          <a><img [src]="googleUser?.photoUrl" class="google-img"> 
+            {{ googleUser?.firstName }}<i class="material-icons right">arrow_drop_down</i></a>
+          <ul class="dropdown">
+            <li class="dropdown-ls"><a [routerLink]="['/dashboard']"><i class="material-icons md-18">trending_up</i>Insights</a></li>
+            <li class="dropdown-ls"><a href="#"><i class="material-icons md-18">power_settings_new</i> Sair</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
-
 <br>
  
 <div class="container center-align stepper-section">
-  <mat-horizontal-stepper labelPosition="bottom" #stepper >
-    <mat-step>
-      <ng-template matStepLabel>Cultura</ng-template>
+  <div class="white-text title-step">{{ titleMsg }}</div>
+  <div class="icons">
+    <img class="svg-icon" src="../../../assets/img/cult-icon.svg" alt="Grupo de pessoas" [ngClass]="{ 'svg-icon': currentUser?.step.id > 1 }">
+    <img class="center" src="../../../assets/img/zup-journey.svg" alt="Pessoa caminhando" [ngClass]="{ 'svg-icon': currentUser?.step.id > 2 }">
+    <img src="../../../assets/img/ethics-icon.svg" alt="Mãos com balança" [ngClass]="{ 'svg-icon': currentUser?.step.id > 3 }">
+  </div>
+  <mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <ng-template matStepperIcon="edit" let-index="index"> {{index + 1}} </ng-template>
+    <mat-step *ngFor="let step of steps; let i = index" [completed]="steps[i].completed ? true : false">
+      <ng-template matStepLabel>{{step.stepLabel}}</ng-template>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <ng-template matStepLabel>Tecnologia</ng-template>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Ética</ng-template>
-    </mat-step>
-</mat-horizontal-stepper>  
+  </mat-horizontal-stepper>  
 
-<button *ngIf="3 >= currentUser?.step.id && currentUser?.step.completed != true" class="waves-effect waves-light btn" [routerLink]="['/quiz']">Iniciar Quiz!</button>
-    <div class="thanks-msg" *ngIf="currentUser?.step.id == 3 && currentUser?.step.completed == true">
-      <p class="white-text">Obrigado por completar o nosso onboarding! :) </p>
+<button *ngIf="currentUser?.stepCompleted == false" class="waves-effect waves-light btn" [routerLink]="['/quiz']">Iniciar Quiz!</button>
+    <div class="thanks-msg" *ngIf="currentUser?.stepCompleted">
+      <p class="white-text">Obrigado por completar o onboarding e conte com a gente em toda sua jornada!
+        <br>
+        <br>
+        Até logo,
+        <br>
+        Time de Employee Experience 
+      </p>
     </div>
-</div>
-
+  </div>
