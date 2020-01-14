@@ -13,19 +13,15 @@ export class QuizService {
   
   constructor(
     private http: HttpClient
-    ) { }
+  ) { }
 
-  private apiGet = 'https://onboardingpgg.herokuapp.com/zupper/alessandra.moreira@zup.com.br';
   private apiPost = 'https://onboardingpgg.herokuapp.com/answer';
   
-
-
-  getAll(){
-    return this.http.get(this.apiGet);
+  getAll(email: String){
+    return this.http.get(`https://onboardingpgg.herokuapp.com/zupper/${email}`);
   }
 
   postAlternative(user: ZupperWithAlternativeModel){
-    console.log('current', user)
     return this.http.post(this.apiPost, user)
   }
 

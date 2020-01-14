@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { QuizService } from '../service/quiz.service';
 import { AlternativeModel, UserQuizModel, ZupperWithAlternativeModel } from '../../quiz/components/alternative.model';
 import { fadeAnimation } from 'src/app/animations';
+import { AuthService, SocialUser } from 'angularx-social-login';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class QuizComponent implements OnInit {
     private quizService : QuizService,
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthService,
     private spinner: NgxSpinnerService
   ) { } 
 
@@ -26,6 +28,7 @@ export class QuizComponent implements OnInit {
   allQuestions: any;
   currentQuestion: any;
   filteredQuestions: any;
+  googleUser: SocialUser;
   userWithAlternative: ZupperWithAlternativeModel;
   currentUser: UserQuizModel;
   alternative: AlternativeModel;
@@ -37,8 +40,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit() {
     this.loadSpinner();
-    this.getCurrentUser();
-    this.getCurrentQuestion();
+    this.getGoogleData();
   }
 
   loadSpinner(){
@@ -49,8 +51,8 @@ export class QuizComponent implements OnInit {
     }, 1500);
   }
 
-  getCurrentUser(){
-    this.quizService.getAll()
+  getCurrentUser(email: String){
+    this.quizService.getAll(email)
     .subscribe(
       (data) => {
         this.userData = data
@@ -60,13 +62,12 @@ export class QuizComponent implements OnInit {
     )
   }
 
-  getCurrentQuestion(){
-    this.quizService.getAll()
+  getCurrentQuestion(email: String){
+    this.quizService.getAll(email)
     .subscribe(
       (data) =>{
  
         this.userObj = data['step'];
-
         this.allQuestions = this.userObj.question
 
         console.log('todas as questões', this.allQuestions)
@@ -86,6 +87,15 @@ export class QuizComponent implements OnInit {
       }
 
     )
+  }
+
+  getGoogleData(){
+    this.authService.authState
+    .subscribe((googleUser) => {
+      this.googleUser = googleUser
+      this.getCurrentUser(this.googleUser.email);
+      this.getCurrentQuestion(this.googleUser.email);
+    })
   }
 
   nextQuestion() {
@@ -131,6 +141,5 @@ export class QuizComponent implements OnInit {
     }
     return newArray;
   }
-
 
 }

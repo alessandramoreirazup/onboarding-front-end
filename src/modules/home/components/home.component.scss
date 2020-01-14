@@ -1,72 +1,134 @@
-
-
-body{
-    background-color: #013750
+body {
+  background-color: #013750;
 }
 
-.nav-border{
-    border-bottom: 2px solid #A5C138;
-    width: 100%
+.nav-border {
+  border-bottom: 2px solid #a5c138;
+  width: 100%;
 }
 
-.stepper-section{
-    margin-top: 10%
+.google-img{
+  border-radius: 100%; 
+  margin-left: -50px; 
+  position: fixed; 
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
 }
 
-.help{
-    float: right;
-    margin-right: 3%;
-    margin-top: 6%
+.drop-content{
+  margin-right: 1%;
 }
 
-
-@mixin styleStepLine($index) {
-    .mat-horizontal-stepper-header {
-        &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
-            height: 2px;
-            background-image: linear-gradient(to right, #00b495, #00aeea);
-        }
-    }
+.title-step{
+  margin-bottom: 8%;
+  font-size: 1.4em;
 }
 
-::ng-deep{
-
-    .mat-stepper-horizontal{
-        background-color: transparent;
-    }
-
-    .mat-horizontal-stepper-header {
-        &[ng-reflect-active="true"]+.mat-stepper-horizontal-line {
-            line-height: 10px;
-        }
-        pointer-events: none;
-    }
-
-    .mat-step-icon{
-        padding: 25px!important;
-        
-    }
-    
-    .mat-step-icon-selected{
-
-        background: #A5C138!important;
-       
-        &:disabled{
-            background: #c4c4c4;
-        }
-    }
-
-    .mat-horizontal-stepper-header::after, .mat-horizontal-stepper-header::before, .mat-stepper-horizontal-line {
-        border-top-color: #A5C138;
-    }
-    
-    .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-        background-color: #A5C138;
-        color: #fff;
-    }
-    
-    .no-click-backdrop {
-        pointer-events: none;
-    }
+.stepper-section {
+  margin-top: 3%;
 }
 
+.icons{
+  display: flex;
+
+  img{
+    width: 8vw;
+  }
+}
+
+.svg-icon{
+  filter: invert(63%) sepia(54%) saturate(509%) hue-rotate(32deg) brightness(150%) contrast(87%);
+}
+
+.disabled-icon{
+  filter: invert(15%) sepia(70%) saturate(7422%) hue-rotate(360deg) brightness(108%) contrast(120%);
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+li {
+  color: #fff;
+  display: block;
+  float: right;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+ul li ul {
+  background: rgb(92, 92, 92);
+  border-radius: 3px;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 100%;
+  position: absolute;
+  transition: all 0.5s ease;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+  float: left;
+  margin-right: 10%;
+}
+
+::ng-deep {
+  .mat-stepper-horizontal {
+    background-color: transparent;
+  }
+
+  .mat-horizontal-stepper-header {
+    pointer-events: none;
+  }
+
+  .mat-step-icon {
+    padding: 25px !important;
+  }
+
+  .mat-horizontal-stepper-header::after,
+  .mat-horizontal-stepper-header::before,
+  .mat-stepper-horizontal-line {
+    border-top-color: #a5c138;
+  }
+
+  .mat-step-header .mat-step-icon-state-edit,
+  .mat-step-header .mat-step-icon-selected,
+  .mat-step-header .mat-step-icon-state-done {
+    background-color: #a5c138!important;
+    color: #fff;
+  }
+
+  .mat-step-icon{
+    background-color: #C4C4C4!important;
+  }
+
+  .no-click-backdrop {
+    pointer-events: none;
+  }
+}

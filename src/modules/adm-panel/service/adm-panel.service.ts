@@ -10,9 +10,9 @@ export class AdmPanelService {
 
   constructor(private http: HttpClient) { }
 
-  fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-  fileExtension = '.xlsx';
-  getUrl = ''
+  public fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  public fileExtension = '.xlsx';
+  private getUrl = 'https://onboardingpgg.herokuapp.com/zupper/detail'
 
   getAllUsers(){
     return this.http.get(this.getUrl)
