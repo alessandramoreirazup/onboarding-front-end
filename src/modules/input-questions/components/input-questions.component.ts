@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { InputQuestionsService } from '../service/input-questions.service';
-import { QuestionModel, AlternativeQuestionModel } from './input-questions.model';
+import { QuestionModel, AlternativeQuestionModel, StepModel } from './input-questions.model';
 import { HomeService } from 'src/modules/home/service/home.service';
 import { FormBuilder, FormGroup, Form, FormControl } from '@angular/forms';
 
@@ -21,6 +21,7 @@ export class InputQuestionsComponent implements OnInit {
     public formAlternative: FormGroup;
     public formAltList: Array<FormGroup> = [];
     public newQuestion: QuestionModel;
+    public stepId: StepModel;
     public questionDescription: String;
     public alternativeObj: any;
     public alternatives: Array<AlternativeQuestionModel> =[];
@@ -58,13 +59,19 @@ export class InputQuestionsComponent implements OnInit {
 
   createFullQuestion(){
     this.newQuestion = new QuestionModel();
-    
+    this.stepId = new StepModel();
+
+    this.stepId.id = this.formQuestion.value.step;
+
     this.newQuestion.description = this.formQuestion.value.description;
-    this.newQuestion.idStep = this.formQuestion.value.step; 
+    this.newQuestion.idStep = this.stepId; 
 
     this.formAltList.forEach((object, index) => {
-      this.alternativeObj = object.value
-      this.alternatives.push(this.alternativeObj)
+      //deixa apenas adicionar até 4 alternativas
+      if(this.alternatives.length < this.alternativeArr.length){
+        this.alternativeObj = object.value;
+        this.alternatives.push(this.alternativeObj);
+      }
     }); 
     
     this.newQuestion.alternatives  = this.alternatives 
@@ -72,7 +79,9 @@ export class InputQuestionsComponent implements OnInit {
     this.inputQuestionService.sendNewQuestion(this.newQuestion)
     .subscribe((res) =>{
       if (res.ok == true) {
-        alert('Pergunta cadastrada com sucesso!')      
+        alert('Pergunta cadastrada com sucesso!');
+        
+        window.location.reload();
       }
     }, (err) => {
         alert('Infelizmente não foi possível realizar o cadastro. Tente novamente')

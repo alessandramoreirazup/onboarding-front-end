@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import { QuestionsListService } from '../service/questions-list.service';
 import { QuestionDeleteModel } from './question.model';
 
@@ -10,6 +12,7 @@ import { QuestionDeleteModel } from './question.model';
 export class QuestionsListComponent implements OnInit {
 
   constructor(
+    private spinner: NgxSpinnerService,
     private questionsListService: QuestionsListService
   ) { }
 
@@ -20,7 +23,6 @@ export class QuestionsListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllQuestions();
-    
   }
 
   filterStep(stepN: Number){
@@ -32,29 +34,43 @@ export class QuestionsListComponent implements OnInit {
     })
   }
 
+  loadSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
+  }
+
   deleteQuestion(id: number){
+    this.spinner.show();
     this.question = new QuestionDeleteModel();
     this.question.id = id;
     console.log(this.question)
     this.questionsListService.deleteQuestion(this.question)
      .subscribe((res) =>{
-       console.log(res)
-       if (res.ok == true) {
+      if (res.ok == true) {
+        this.spinner.hide();
          alert('Pergunta deletada com sucesso!')      
        }
-
-       this.getAllQuestions()
+       this.getAllQuestions();
      }, (err) => {
-         alert('Infelizmente não foi possível deletar a pergunta. Tente novamente')
+          this.spinner.hide();
+          alert('Infelizmente não foi possível deletar a pergunta. Tente novamente')
      })
   }
 
   getAllQuestions(){
+    this.spinner.show();
+
     return this.questionsListService.getAllQuestions()
     .subscribe((data) => {
       this.stepList = data['steps']
       this.filteredStep = this.stepList[0] 
-      console.log(this.stepList)
+
+      if(this.stepList){
+        this.spinner.hide();
+      }
     });
   }
 

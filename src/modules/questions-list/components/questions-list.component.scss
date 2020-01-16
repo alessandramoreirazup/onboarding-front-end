@@ -50,3 +50,14 @@ select{
         opacity: 0.5;
     }
 }
+
+.spinner{
+    position: relative;
+    width: 100%;
+}
+
+.delete{
+    &:hover{
+        filter: brightness(2);
+    }
+}

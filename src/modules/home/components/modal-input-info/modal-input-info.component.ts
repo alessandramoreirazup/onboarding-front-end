@@ -101,6 +101,7 @@ export class ModalInputInfoComponent implements OnInit {
     )
 
     this.dialog.ngOnDestroy();
+    window.location.reload();
   }
 
 }

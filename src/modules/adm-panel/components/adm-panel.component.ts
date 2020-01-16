@@ -27,6 +27,7 @@ export class AdmPanelComponent implements OnInit {
       this.usersList = users
 
       this.zuppers = this.usersList.zupperDashboard
+      console.log(this.zuppers)
     })
   }
 }

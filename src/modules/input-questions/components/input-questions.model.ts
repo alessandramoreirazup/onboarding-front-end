@@ -1,5 +1,5 @@
 export class QuestionModel{
-    idStep: number
+    idStep: StepModel
     description: String
     alternatives: Array<AlternativeQuestionModel>
 }
@@ -7,4 +7,8 @@ export class QuestionModel{
 export class AlternativeQuestionModel{
     description: String
     correct: any
+}
+
+export class StepModel{
+    id: number
 }

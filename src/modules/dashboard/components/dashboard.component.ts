@@ -38,7 +38,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadSpinner();
-    this.getData();
 
     this.myOptions = {
       isStacked: true,
@@ -47,17 +46,18 @@ export class DashboardComponent implements OnInit {
       
     };
 
-
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
     });
+
+    this.getData();
   }  
 
   fillLocationGraph(){
-      this.locationData.forEach((element, i) => {
-        this.locationGraph.push([element.location, element.scoreboard])
-      });
+    this.locationData.forEach((element, i) => {
+      this.locationGraph.push([element.location, element.scoreboard])
+    });
   }
 
   fillPodGraph(){
@@ -87,8 +87,6 @@ export class DashboardComponent implements OnInit {
     return this.dashboardService.getGeneralData()
     .subscribe((data) => {
       this.generalData = data
-      console.log(this.generalData)
-
       this.fillGeneralData();
     })
   }
